@@ -10,27 +10,39 @@
     <script type="module" src="js/main.js"></script>
 </head>
 <body>
-    <header class="header" id="top">
-        <a class="header__logo" href="#top" aria-label="Panto - home">
-            Panto
-        </a>
-        <nav class="header__nav" aria-label="Main navigation">
-            <a class="header__link" href="#about">About Us</a>
-            <a class="header__link" href="#products">Best products</a>
-            <a class="header__link" href="#reviews">Reviews</a>
-        </nav>
-        <button
-            class="header__cart"
-            type="button"
-            aria-label="Open cart"
-        >
-            <img src="assets/icons/bag.svg" alt="">
-        </button>
-    </header>
-    <main class="main">
-        <section class="hero">
+    <div class="page-top">
+        <header class="header" id="top">
+            <div class="container header__inner">
+                <a class="header__logo" href="#top" aria-label="Panto - home">
+                    Panto
+                </a>
+                <nav class="header__nav" aria-label="Main navigation">
+                    <a class="header__link" href="#about">About Us</a>
+                    <a class="header__link" href="#products">Best products</a>
+                    <a class="header__link" href="#reviews">Reviews</a>
+                </nav>
+                <button
+                    class="header__cart"
+                    type="button"
+                    aria-label="Open cart"
+                >
+                    <img src="assets/icons/bag.svg" alt="">
+                </button>
+            </div>
+        </header>
 
+        <section class="hero">
+            <div class="container hero__inner">
+                <h1 class="hero__title">Make Your Interior More Minimalistic & Modern</h1>
+                <p class="hero__desc">Turn your room with panto into a lot more minimalist and modern with ease and speed</p>
+                <div class="hero__search">
+                    <input class="hero__search-input" type="search" placeholder="Search furniture" aria-label="Search furniture">
+                    <button class="hero__search-btn"><img src="assets/icons/search.svg" alt="search"></button>
+                </div>
+            </div>
         </section>
+    </div>
+    <main class="main">
         <section class="why-us" id="about">
 
         </section>

@@ -1,0 +1,12 @@
+.page-top {
+  display: flex;
+  flex-direction: column;
+
+  aspect-ratio: 1440 / 1084;
+  min-height: 600px;
+
+  background-image: url("../../assets/images/bg/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

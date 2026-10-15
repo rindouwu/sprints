@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as v;
+
+.header {
+  flex-shrink: 0;
+  height: 80px;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+  }
+  &__logo {
+    font-size: 28px;
+    font-weight: v.$fw-bold;
+  }
+  &__nav {
+    display: flex;
+    gap: 60px;
+  }
+  &__link {
+    font-size: 18px;
+  }
+  &__cart {
+
+  }
+}

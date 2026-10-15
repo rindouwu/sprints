@@ -1,0 +1,9 @@
+@use '../abstracts/variables' as v;
+
+.container {
+  width: 100%;
+  max-width: v.$container-width;
+  margin: 0 auto;
+  padding-left: v.$container-padding;
+  padding-right: v.$container-padding;
+}
