@@ -1,0 +1,120 @@
+@use '../abstracts/variables' as v;
+
+.reviews {
+  padding-top: 100px;
+
+  &__inner {
+    color: v.$text-color-secondary;
+    text-align: center;
+  }
+  &__action-text {
+    font-size: 18px;
+    font-weight: v.$fw-semibold;
+    color: v.$text-color-accent;
+    letter-spacing: 17.5%;
+    text-transform: uppercase;
+  }
+  &__title {
+    font-size: 42px;
+    font-weight: v.$fw-bold;
+    padding-bottom: 60px;
+  }
+  &__slider {
+    position: relative;
+    margin-bottom: 150px;
+  }
+  &__track {
+    display: flex;
+    gap: 33px;
+    overflow: hidden;
+  }
+  &__slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: v.$bg-primary;
+    border-radius: 50%;
+
+    &--prev { left: -24px; }
+    &--next { right: -24px; }
+  }
+}
+
+.review {
+  position: relative;
+  height: 470px;
+  border-radius: v.$radius-md;
+  flex: 0 0 calc((100% - 66px) / 3);
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+
+  &__avatar {
+    position: absolute;
+    z-index: 2;
+    border-radius: 50%;
+    border: 2px solid v.$bg-primary;
+    top: 45%;
+    width: 50px;
+    height: 50px;
+  }
+  &__body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    bottom: 18px;
+    max-width: 330px;
+    min-height: 200px;
+    background-color: v.$bg-primary;
+    border-radius: v.$radius-md;
+  }
+  &__name {
+    font-size: 18px;
+    font-weight: v.$fw-bold;
+    margin-top: 8px;
+  }
+  &__role {
+    font-size: 12px;
+    filter: opacity(60%);
+  }
+  &__quote {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    filter: opacity(80%);
+  }
+  &__star {
+    width: 12px;
+    height: 12px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.review--1 {
+  background-image: url('../../assets/images/reviews/review-1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.review--2 {
+  background-image: url('../../assets/images/reviews/review-2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.review--3 {
+  background-image: url('../../assets/images/reviews/review-3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
