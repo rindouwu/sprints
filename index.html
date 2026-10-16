@@ -26,7 +26,7 @@
                     type="button"
                     aria-label="Open cart"
                 >
-                    <img src="assets/icons/bag.svg" alt="">
+                    <img src="assets/icons/other/bag.svg" alt="">
                 </button>
             </div>
         </header>
@@ -37,7 +37,7 @@
                 <p class="hero__desc">Turn your room with panto into a lot more minimalist and modern with ease and speed</p>
                 <div class="hero__search">
                     <input class="hero__search-input" type="search" placeholder="Search furniture" aria-label="Search furniture">
-                    <button class="hero__search-btn"><img src="assets/icons/search.svg" alt="search"></button>
+                    <button class="hero__search-btn"><img src="assets/icons/other/search.svg" alt="search"></button>
                 </div>
             </div>
         </section>
@@ -52,7 +52,7 @@
                         <p class="why-us__advantage--desc">The advantage of hiring a workspace with us is that givees you comfortable service and all-around facilities.</p>
                         <div class="why-us__more-info">
                             <span class="why-us__more-info--text">More info</span>
-                            <img class="why-us__more-info--arrow" src="assets/icons/arrow-primary.svg" alt="arrow primary">
+                            <img class="why-us__more-info--arrow" src="assets/icons/arrows/arrow-primary.svg" alt="arrow primary">
                         </div>
                     </div>
                     <div class="why-us__advantage">
@@ -60,7 +60,7 @@
                         <p class="why-us__advantage--desc">You can get a workspace of the highst quality at an affordable price and still enjoy the facilities that are oly here.</p>
                         <div class="why-us__more-info">
                             <span class="why-us__more-info--text">More info</span>
-                            <img class="why-us__more-info--arrow" src="assets/icons/arrow-primary.svg" alt="arrow primary">
+                            <img class="why-us__more-info--arrow" src="assets/icons/arrows/arrow-primary.svg" alt="arrow primary">
                         </div>
                     </div>
                     <div class="why-us__advantage">
@@ -68,14 +68,190 @@
                         <p class="why-us__advantage--desc">We provide many unique work space choices so that you can choose the workspace to your liking.</p>
                         <div class="why-us__more-info">
                             <span class="why-us__more-info--text">More info</span>
-                            <img class="why-us__more-info--arrow" src="assets/icons/arrow-primary.svg" alt="arrow primary">
+                            <img class="why-us__more-info--arrow" src="assets/icons/arrows/arrow-primary.svg" alt="arrow primary">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <section class="products" id="products">
-
+            <div class="container products__inner">
+                <h2 class="products__title">Best Selling Product</h2>
+                <div class="products__filters" data-product-filters>
+                    <button
+                        class="product-filters__btn product-filters__btn--active"
+                        type="button"
+                        data-cat="chair"
+                        aria-pressed="true"
+                    >
+                        Chair
+                    </button>
+                    <button
+                        class="product-filters__btn"
+                        type="button"
+                        data-cat="beds"
+                        aria-pressed="false"
+                    >
+                        Beds
+                    </button>
+                    <button
+                        class="product-filters__btn"
+                        type="button"
+                        data-cat="sofa"
+                        aria-pressed="false"
+                    >
+                        Sofa
+                    </button>
+                    <button
+                        class="product-filters__btn"
+                        type="button"
+                        data-cat="lamp"
+                        aria-pressed="false"
+                    >
+                        Lamp
+                    </button>
+                </div>
+                <div class="products__slider">
+                    <button class="products__slider-btn products__slider-btn--prev"><img src="assets/icons/arrows/arrow-left.svg" alt="arrow-left"></button>
+                    <div class="products__grid">
+                        <article class="products__card" data-category="chair">
+                            <div class="products__card-top">
+                                <img
+                                        class="products__card-image"
+                                        src="assets/images/chairs/chair-1.png"
+                                        alt="chair-1"
+                                >
+                            </div>
+                            <div class="products__card-body">
+                                <span class="products__card-category">Chair</span>
+                                <h3 class="products__card-title">Sakarias Armchair</h3>
+                                <div class="products__card-stars">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                </div>
+                                <div class="products__card-bottom">
+                                <span class="products__card-price">
+                                    <sup>&dollar;</sup>
+                                    392
+                                </span>
+                                    <button
+                                            class="products__card-add-btn"
+                                            type="button"
+                                    >
+                                        <img class="products__card-add-icon" src="assets/icons/button/plus.svg" alt="add-to-cart">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="products__card" data-category="chair">
+                            <div class="products__card-top">
+                                <img
+                                        class="products__card-image"
+                                        src="assets/images/chairs/chair-1.png"
+                                        alt="chair-1"
+                                >
+                            </div>
+                            <div class="products__card-body">
+                                <span class="products__card-category">Chair</span>
+                                <h3 class="products__card-title">Sakarias Armchair</h3>
+                                <div class="products__card-stars">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                </div>
+                                <div class="products__card-bottom">
+                                <span class="products__card-price">
+                                    <sup>&dollar;</sup>
+                                    392
+                                </span>
+                                    <button
+                                            class="products__card-add-btn"
+                                            type="button"
+                                    >
+                                        <img class="products__card-add-icon" src="assets/icons/button/plus.svg" alt="add-to-cart">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="products__card" data-category="chair">
+                            <div class="products__card-top">
+                                <img
+                                        class="products__card-image"
+                                        src="assets/images/chairs/chair-1.png"
+                                        alt="chair-1"
+                                >
+                            </div>
+                            <div class="products__card-body">
+                                <span class="products__card-category">Chair</span>
+                                <h3 class="products__card-title">Sakarias Armchair</h3>
+                                <div class="products__card-stars">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                </div>
+                                <div class="products__card-bottom">
+                                <span class="products__card-price">
+                                    <sup>&dollar;</sup>
+                                    392
+                                </span>
+                                    <button
+                                            class="products__card-add-btn"
+                                            type="button"
+                                    >
+                                        <img class="products__card-add-icon" src="assets/icons/button/plus.svg" alt="add-to-cart">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="products__card" data-category="chair">
+                            <div class="products__card-top">
+                                <img
+                                        class="products__card-image"
+                                        src="assets/images/chairs/chair-1.png"
+                                        alt="chair-1"
+                                >
+                            </div>
+                            <div class="products__card-body">
+                                <span class="products__card-category">Chair</span>
+                                <h3 class="products__card-title">Sakarias Armchair</h3>
+                                <div class="products__card-stars">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                    <img class="products__card-star" src="assets/icons/stars/star.svg" alt="star">
+                                </div>
+                                <div class="products__card-bottom">
+                                <span class="products__card-price">
+                                    <sup>&dollar;</sup>
+                                    392
+                                </span>
+                                    <button
+                                            class="products__card-add-btn"
+                                            type="button"
+                                    >
+                                        <img class="products__card-add-icon" src="assets/icons/button/plus.svg" alt="add-to-cart">
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <button class="products__slider-btn products__slider-btn--next"><img src="assets/icons/arrows/arrow-right.svg" alt="arrow-right"></button>
+                </div>
+                <div class="products__view-all-wrap">
+                    <a class="products__view-all" href="/">
+                        View All
+                        <img src="assets/icons/arrows/arrow-primary.svg" alt="arrow-primary">
+                    </a>
+                </div>
+            </div>
         </section>
         <section class="reviews" id="reviews">
 
