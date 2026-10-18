@@ -23,10 +23,13 @@
     position: relative;
     margin-bottom: 150px;
   }
+  &__viewport {
+    overflow: hidden;
+  }
   &__track {
     display: flex;
     gap: 33px;
-    overflow: hidden;
+    transition: transform .4s ease;
   }
   &__slider-btn {
     position: absolute;
