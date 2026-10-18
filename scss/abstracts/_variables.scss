@@ -18,11 +18,24 @@ $text-color-secondary: #1E1E1E;
 $text-color-accent: #E58411;
 $text-copyright: #1E2833;
 $text-footer-title: #F6973F;
+$text-color-rating: #6B7280;
+
+$cart-color-primary: #23272B;
+$cart-color-accent: #1E2124;
+$cart-badge-text-color: #8BABA6;
+$cart-badge-color: rgba(#8BABA6, 0.16);
+$cart-item-color: #2C3035;
+$cart-item-label-color: #9CA3AF;
+$cart-item-value-free-color: #9CD4CB;
+$cart-color-order: #5C8C85;
+$cart-quantity-btn-color: #5C8C85;
 
 $container-width: 1300px;
 $container-padding: 40px;
 
 $border-default: 1px solid #FFFFFF;
+$border-cart-close: 1px solid rgba(#FFFFFF, 0.1);
+$border-cart-basic: 1px solid rgba(#FFFFFF, 0.08);
 
 $radius-sm: 8px;
 $radius-md: 14px;

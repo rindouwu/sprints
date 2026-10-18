@@ -377,5 +377,97 @@
             </div>
         </div>
     </footer>
+
+    <div class="cart-overlay" data-cart-close></div>
+    <aside class="cart" id="cart" aria-label="Корзина" aria-hidden="true">
+        <header class="cart__header cart__inner">
+            <div class="cart__title-wrap">
+                <h2 class="cart__title">Корзина</h2>
+                <span class="cart__badge">2 товара</span>
+            </div>
+            <button class="cart__close-btn" type="button" aria-label="Закрыть корзину">
+                <img src="assets/icons/cart/cross.svg" alt="">
+            </button>
+        </header>
+        <div class="cart__body cart__inner">
+            <article class="cart__item">
+                <img class="cart__item-img" src="assets/images/chairs/chair-3.png" alt="">
+                <div class="cart__item-info">
+                    <div class="cart__item-info-top">
+                        <h3 class="cart__item-title">Anjay Chair</h3>
+                        <button class="cart__item-close-btn"><img src="assets/icons/cart/cross-secondary.svg" alt=""></button>
+                    </div>
+                    <p class="cart__item-category">Chair</p>
+                    <div class="cart__rating">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <span class="cart__rating-total">5.0</span>
+                    </div>
+                    <div class="cart__item-info-bottom">
+                        <span class="cart__item-price">&dollar;519</span>
+
+                        <div class="quantity">
+                            <button class="quantity__btn quantity__btn--minus" type="button" aria-label="Уменьшить количество">-</button>
+                            <input class="quantity__field" type="text" value="1" readonly aria-label="Количество товара">
+                            <button class="quantity__btn quantity__btn--plus" type="button" aria-label="Увеличить количество">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="cart__item">
+                <img class="cart__item-img" src="assets/images/chairs/chair-3.png" alt="">
+                <div class="cart__item-info">
+                    <div class="cart__item-info-top">
+                        <h3 class="cart__item-title">Anjay Chair</h3>
+                        <button class="cart__item-close-btn"><img src="assets/icons/cart/cross-secondary.svg" alt=""></button>
+                    </div>
+                    <p class="cart__item-category">Chair</p>
+                    <div class="cart__rating">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <img class="cart__rating-star" src="assets/icons/stars/cart/cart-star.svg" alt="">
+                        <span class="cart__rating-total">5.0</span>
+                    </div>
+                    <div class="cart__item-info-bottom">
+                        <span class="cart__item-price">&dollar;519</span>
+
+                        <div class="quantity">
+                            <button class="quantity__btn quantity__btn--minus" type="button" aria-label="Уменьшить количество">-</button>
+                            <input class="quantity__field" type="text" value="1" readonly aria-label="Количество товара">
+                            <button class="quantity__btn quantity__btn--plus" type="button" aria-label="Увеличить количество">+</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <footer class="cart__footer cart__inner">
+            <div class="cart__info">
+                <div class="cart__info-wrap">
+                    <div class="cart__info-item">
+                        <p class="cart__info-label">Сумма товаров</p>
+                        <span class="cart__info-value">&dollar;818</span>
+                    </div>
+                    <div class="cart__info-item">
+                        <p class="cart__info-label">Доставка</p>
+                        <span class="cart__info-value cart__info-value--free">Бесплатно</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cart__totals">
+                <span class="cart__totals-label">Итого</span>
+                <span class="cart__totals-value">&dollar;818</span>
+            </div>
+            <div class="cart__order">
+                <button class="cart__order-btn" type="button">
+                    Оформить заказ &rarr;
+                </button>
+            </div>
+        </footer>
+    </aside>
 </body>
 </html>
