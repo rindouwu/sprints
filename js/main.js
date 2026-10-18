@@ -1,6 +1,7 @@
 import { initSlider } from './modules/slider.js'
 import { initProducts } from "./modules/products";
 
+initProducts()
 initSlider({
     sliderSelector: '.reviews__slider',
     trackSelector: '.reviews__track',
@@ -8,5 +9,10 @@ initSlider({
     prevButtonSelector: '.reviews__slider-btn--prev',
     nextButtonSelector: '.reviews__slider-btn--next',
 })
-
-initProducts()
+initSlider({
+    sliderSelector: '.products__slider',
+    trackSelector: '.products__grid',
+    cardSelector: '.products__card',
+    prevButtonSelector: '.products__slider-btn--prev',
+    nextButtonSelector: '.products__slider-btn--next'
+})

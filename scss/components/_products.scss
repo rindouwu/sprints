@@ -7,10 +7,13 @@
   &__inner {
     padding-top: 50px;
   }
+  &__viewport {
+    overflow: hidden;
+  }
   &__grid {
     display: flex;
     gap: 30px;
-    overflow: hidden;
+    transition: transform .4s ease;
   }
   &__title {
     font-size: 42px;

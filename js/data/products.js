@@ -36,6 +36,24 @@ export const products = [
         rating: 5
     },
     {
+        id: 'chair-5',
+        title: 'Nyantuy Chair 5',
+        category: 'chair',
+        categoryName: 'Chair',
+        price: 921,
+        image: 'assets/images/chairs/chair-4.png',
+        rating: 5
+    },
+    {
+        id: 'chair-6',
+        title: 'Nyantuy Chair 6',
+        category: 'chair',
+        categoryName: 'Chair',
+        price: 921,
+        image: 'assets/images/chairs/chair-4.png',
+        rating: 5
+    },
+    {
         id: 'bed-1',
         title: 'Nyantuy Bed',
         category: 'beds',
