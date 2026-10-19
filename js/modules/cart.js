@@ -25,7 +25,13 @@ export function initCart() {
     const cartBody = document.querySelector('.cart__body')
     if(!productGrid || !cartBody) return
 
-    const cartItems = []
+    const savedCart = localStorage.getItem('cart')
+    const cartItems = savedCart ? JSON.parse(savedCart) : []
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cartItems))
+    }
+    renderCart(cartItems)
+
     productGrid.addEventListener('click', (e) => {
         const button = e.target.closest('.products__card-add-btn')
         if(!button) return
@@ -47,6 +53,7 @@ export function initCart() {
             })
         }
 
+        saveCart()
         renderCart(cartItems)
     })
     cartBody.addEventListener('click', (e) => {
@@ -68,11 +75,12 @@ export function initCart() {
             cartItems.splice(cartItems.indexOf(item), 1)
         }
 
+        saveCart()
         renderCart(cartItems)
     })
 }
 
-export function renderCart(cartItems) {
+function renderCart(cartItems) {
     const cartBody = document.querySelector('.cart__body')
     if(!cartBody) return
 
@@ -89,7 +97,7 @@ export function renderCart(cartItems) {
                     ${Array.from({length: item.rating}, () => {`
                         <img 
                             class="cart__rating-star" 
-                            src="assets/icons/stars/cart/cart-star.svg" 
+                            src="../../assets/icons/stars/cart/cart-star.svg" 
                             alt=""
                         >
                     `}).join('')}
