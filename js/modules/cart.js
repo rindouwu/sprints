@@ -2,7 +2,8 @@ import {products} from '../data/products.js';
 
 export function initCart() {
     const productGrid = document.querySelector('.products__grid')
-    if(!productGrid) return
+    const cartBody = document.querySelector('.cart__body')
+    if(!productGrid || !cartBody) return
 
     const cartItems = []
     productGrid.addEventListener('click', (e) => {
@@ -27,7 +28,27 @@ export function initCart() {
         }
 
         renderCart(cartItems)
-        console.log(cartItems)
+    })
+    cartBody.addEventListener('click', (e) => {
+        const button = e.target.closest('.quantity__btn, .cart__item-close-btn')
+        if(!button) return
+
+        const cartItem = button.closest('.cart__item')
+        if(!cartItem) return
+
+        const productId = cartItem.dataset.id
+        const item = cartItems.find((item) => item.id === productId)
+        if(!item) return
+
+        if(button.classList.contains('quantity__btn--minus')) {
+            item.quantity = Math.max(1, item.quantity - 1)
+        } else if(button.classList.contains('quantity__btn--plus')) {
+            item.quantity++
+        } else if(button.classList.contains('cart__item-close-btn')) {
+            cartItems.splice(cartItems.indexOf(item), 1)
+        }
+
+        renderCart(cartItems)
     })
 }
 
