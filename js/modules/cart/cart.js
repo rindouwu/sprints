@@ -1,4 +1,5 @@
-import {products} from '../data/products.js';
+import { products } from '../../data/products.js';
+import { saveCart, loadCart } from "./cart-storage";
 
 export function initCart() {
     const cart = document.querySelector('.cart')
@@ -26,11 +27,8 @@ export function initCart() {
     const cartBody = document.querySelector('.cart__body')
     if(!productGrid || !cartBody) return
 
-    const savedCart = localStorage.getItem('cart')
-    const cartItems = savedCart ? JSON.parse(savedCart) : []
-    function saveCart() {
-        localStorage.setItem('cart', JSON.stringify(cartItems))
-    }
+    const cartItems = loadCart()
+
     function orderCart() {
         cartItems.splice(0, cartItems.length)
     }
@@ -72,7 +70,7 @@ export function initCart() {
             })
         }
 
-        saveCart()
+        saveCart(cartItems)
         renderCart(cartItems)
         updateCartCount()
         countCartTotal()
@@ -96,14 +94,14 @@ export function initCart() {
             cartItems.splice(cartItems.indexOf(item), 1)
         }
 
-        saveCart()
+        saveCart(cartItems)
         renderCart(cartItems)
         updateCartCount()
         countCartTotal()
     })
     orderButton.addEventListener('click', () => {
         orderCart()
-        saveCart()
+        saveCart(cartItems)
         renderCart(cartItems)
         updateCartCount()
         countCartTotal()
@@ -130,7 +128,7 @@ function renderCart(cartItems) {
                         ${Array.from({length: item.rating}, () => {`
                             <img 
                                 class="cart__rating-star" 
-                                src="../../assets/icons/stars/cart/cart-star.svg" 
+                                src="../../../assets/icons/stars/cart/cart-star.svg" 
                                 alt=""
                             >
                         `}).join('')}

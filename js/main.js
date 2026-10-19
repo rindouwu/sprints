@@ -1,6 +1,6 @@
 import { initSlider } from './modules/slider'
 import { initProducts } from "./modules/products";
-import { initCart } from './modules/cart'
+import { initCart } from './modules/cart/cart'
 
 initProducts()
 
