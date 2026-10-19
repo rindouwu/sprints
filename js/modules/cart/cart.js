@@ -1,6 +1,6 @@
 import { products } from '../../data/products.js';
-import { saveCart, loadCart } from "./cart-storage";
-import { renderCart, updateCartCount, countCartTotal } from "./cart-render";
+import { saveCart, loadCart } from "./cart-storage.js";
+import { renderCart, updateCartCount, countCartTotal } from "./cart-render.js";
 
 export function initCart() {
     const orderButton = document.querySelector('.cart__order-btn')
@@ -9,6 +9,13 @@ export function initCart() {
     if(!productGrid || !cartBody || !orderButton) return
 
     const cartItems = loadCart()
+
+    function updateCart() {
+        saveCart(cartItems)
+        renderCart(cartItems)
+        updateCartCount(cartItems)
+        countCartTotal(cartItems)
+    }
 
     function orderCart() {
         cartItems.splice(0, cartItems.length)
@@ -39,10 +46,7 @@ export function initCart() {
             })
         }
 
-        saveCart(cartItems)
-        renderCart(cartItems)
-        updateCartCount(cartItems)
-        countCartTotal(cartItems)
+        updateCart()
     })
     cartBody.addEventListener('click', (e) => {
         const button = e.target.closest('.quantity__btn, .cart__item-close-btn')
@@ -63,16 +67,10 @@ export function initCart() {
             cartItems.splice(cartItems.indexOf(item), 1)
         }
 
-        saveCart(cartItems)
-        renderCart(cartItems)
-        updateCartCount(cartItems)
-        countCartTotal(cartItems)
+        updateCart()
     })
     orderButton.addEventListener('click', () => {
         orderCart()
-        saveCart(cartItems)
-        renderCart(cartItems)
-        updateCartCount(cartItems)
-        countCartTotal(cartItems)
+        updateCart()
     })
 }
