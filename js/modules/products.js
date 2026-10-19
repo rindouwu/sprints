@@ -23,14 +23,13 @@ export function initProducts() {
                     <span class="products__card-category">${product.categoryName}</span>
                     <h3 class="products__card-title">${product.title}</h3>
                     <div class="products__card-stars">
-                        ${Array.from({length: product.rating}, () => `
+                        ${Array.from({length: 5}, (_, index) => `
                             <img 
                                 class="products__card-star" 
-                                src="assets/icons/stars/star.svg" 
-                                alt="star"
+                                src="assets/icons/stars/${index < product.rating ? 'star.svg' : 'star-empty.svg'}" 
+                                alt=""
                             >
                         `).join('')}
-                        
                     </div>
                     <div class="products__card-bottom">
                     <span class="products__card-price">

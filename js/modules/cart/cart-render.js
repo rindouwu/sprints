@@ -15,13 +15,13 @@ export function renderCart(cartItems) {
                     </div>
                     <p class="cart__item-category">${item.categoryName}</p>
                     <div class="cart__rating">
-                        ${Array.from({length: item.rating}, () => {`
+                        ${Array.from({length: 5}, (_, index) => `
                             <img 
                                 class="cart__rating-star" 
-                                src="../../../assets/icons/stars/cart/cart-star.svg" 
+                                src="assets/icons/stars/cart/${index < item.rating ? 'cart-star.svg' : 'cart-star-empty.svg'}"
                                 alt=""
                             >
-                        `}).join('')}
+                        `).join('')}
                         <span class="cart__rating-total">${item.rating}</span>
                     </div>
                     <div class="cart__item-info-bottom">

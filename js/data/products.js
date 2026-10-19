@@ -6,7 +6,7 @@ export const products = [
         categoryName: 'Chair',
         price: 392,
         image: 'assets/images/chairs/chair-1.png',
-        rating: 5
+        rating: 2
     },
     {
         id: 'chair-2',

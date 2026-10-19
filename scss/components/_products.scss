@@ -76,6 +76,10 @@
       display: flex;
       justify-content: space-between;
     }
+    &-star {
+      width: 15px;
+      height: 15px;
+    }
     &-price {
       font-size: 21px;
       font-weight: v.$fw-semibold;
