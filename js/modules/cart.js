@@ -16,10 +16,16 @@ export function initCart() {
         const product = products.find((product) => product.id === productId)
         if(!product) return
 
-        cartItems.push({
-            ...product,
-            quantity: 1,
-        })
+        const existingProduct = cartItems.find((item) => product.id === item.id)
+        if(existingProduct) {
+            existingProduct.quantity++
+        } else {
+            cartItems.push({
+                ...product,
+                quantity: 1,
+            })
+        }
+
         console.log(cartItems)
     })
 }
