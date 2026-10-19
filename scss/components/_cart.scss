@@ -1,5 +1,23 @@
 @use '../abstracts/variables' as v;
 
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  z-index: 1000;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  visibility: hidden;
+  transition: .3s ease;
+  cursor: pointer;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .cart {
   position: fixed;
   display: flex;
@@ -14,6 +32,9 @@
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+  &.is-open {
+    transform: translateX(0);
+  }
   &__inner {
     padding: 0 25px;
   }
