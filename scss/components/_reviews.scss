@@ -25,6 +25,8 @@
   }
   &__viewport {
     overflow: hidden;
+    padding-bottom: 40px;
+    margin-bottom: -40px;
   }
   &__track {
     display: flex;
@@ -58,14 +60,30 @@
   display: flex;
   justify-content: center;
 
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10%;
+    left: 10%;
+
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: 0 25px 20px -5px rgba(0, 0, 0, 0.2);
+  }
   &__avatar {
     position: absolute;
-    z-index: 2;
-    border-radius: 50%;
-    border: 2px solid v.$bg-primary;
-    top: 45%;
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
+    border-radius: 50%;
+    background: v.$bg-primary;
+    z-index: 2;
+    box-shadow: 0 0 0 8px #fff, 0 5px 15px rgba(0,0,0,0.1);
   }
   &__body {
     position: absolute;
@@ -79,6 +97,11 @@
     min-height: 200px;
     background-color: v.$bg-primary;
     border-radius: v.$radius-md;
+    transition: transform .3s ease;
+
+    &:hover {
+      transform: translateY(-1.5%);
+    }
   }
   &__name {
     font-size: 18px;
@@ -92,14 +115,17 @@
   &__quote {
     font-size: 14px;
     text-align: center;
-    margin-top: 20px;
+    overflow: hidden;
+    height: 60px;
+    margin-top: 10px;
     filter: opacity(80%);
+  }
+  &__stars {
+    margin-top: 20px;
   }
   &__star {
     width: 12px;
     height: 12px;
-    margin-top: 20px;
-    margin-bottom: 10px;
   }
 }
 
