@@ -1,31 +1,12 @@
 import { products } from '../../data/products.js';
 import { saveCart, loadCart } from "./cart-storage";
 import { renderCart, updateCartCount, countCartTotal } from "./cart-render";
+
 export function initCart() {
-    const cart = document.querySelector('.cart')
-    const cartOverlay = document.querySelector('.cart-overlay')
-    const openButton = document.querySelector('[data-cart-open]')
-    const closeButton = document.querySelector('.cart__close-btn')
     const orderButton = document.querySelector('.cart__order-btn')
-    if(!cart || !cartOverlay || !openButton || !closeButton || !orderButton) return
-
-    function openCart() {
-        cart.classList.add('is-open')
-        cartOverlay.classList.add('is-open')
-        cart.setAttribute('aria-hidden', 'false')
-    }
-    function closeCart() {
-        cart.classList.remove('is-open')
-        cartOverlay.classList.remove('is-open')
-        cart.setAttribute('aria-hidden', 'true')
-    }
-    openButton.addEventListener('click', openCart)
-    closeButton.addEventListener('click', closeCart)
-    cartOverlay.addEventListener('click', closeCart)
-
     const productGrid = document.querySelector('.products__grid')
     const cartBody = document.querySelector('.cart__body')
-    if(!productGrid || !cartBody) return
+    if(!productGrid || !cartBody || !orderButton) return
 
     const cartItems = loadCart()
 
@@ -89,7 +70,6 @@ export function initCart() {
     })
     orderButton.addEventListener('click', () => {
         orderCart()
-
         saveCart(cartItems)
         renderCart(cartItems)
         updateCartCount(cartItems)

@@ -1,8 +1,10 @@
 import { initSlider } from './modules/slider'
 import { initProducts } from "./modules/products";
 import { initCart } from './modules/cart/cart'
+import { initCartPanel } from './modules/cart/cart-panel'
 
 initProducts()
+initCartPanel()
 
 initSlider({
     sliderSelector: '.reviews__slider',
