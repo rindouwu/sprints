@@ -30,7 +30,15 @@ export function initCart() {
     function saveCart() {
         localStorage.setItem('cart', JSON.stringify(cartItems))
     }
+    function updateCartCount() {
+        const cartCount = document.querySelector('[data-cart-count]')
+        if(!cartCount) return
+
+        const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0)
+        cartCount.textContent = totalQuantity
+    }
     renderCart(cartItems)
+    updateCartCount()
 
     productGrid.addEventListener('click', (e) => {
         const button = e.target.closest('.products__card-add-btn')
@@ -55,6 +63,7 @@ export function initCart() {
 
         saveCart()
         renderCart(cartItems)
+        updateCartCount()
     })
     cartBody.addEventListener('click', (e) => {
         const button = e.target.closest('.quantity__btn, .cart__item-close-btn')
@@ -77,6 +86,7 @@ export function initCart() {
 
         saveCart()
         renderCart(cartItems)
+        updateCartCount()
     })
 }
 

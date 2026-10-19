@@ -22,6 +22,17 @@
     font-size: 18px;
   }
   &__cart {
+    position: relative;
 
+    &-counter {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: 20px;
+      text-align: center;
+      font-weight: v.$fw-bold;
+      border-radius: 50%;
+      background-color: v.$text-color-accent;
+    }
   }
 }
