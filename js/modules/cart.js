@@ -5,7 +5,8 @@ export function initCart() {
     const cartOverlay = document.querySelector('.cart-overlay')
     const openButton = document.querySelector('[data-cart-open]')
     const closeButton = document.querySelector('.cart__close-btn')
-    if(!cart || !cartOverlay || !openButton || !closeButton) return
+    const orderButton = document.querySelector('.cart__order-btn')
+    if(!cart || !cartOverlay || !openButton || !closeButton || !orderButton) return
 
     function openCart() {
         cart.classList.add('is-open')
@@ -29,6 +30,9 @@ export function initCart() {
     const cartItems = savedCart ? JSON.parse(savedCart) : []
     function saveCart() {
         localStorage.setItem('cart', JSON.stringify(cartItems))
+    }
+    function orderCart() {
+        cartItems.splice(0, cartItems.length)
     }
     function updateCartCount() {
         const cartCount = document.querySelector('[data-cart-count]')
@@ -92,6 +96,13 @@ export function initCart() {
             cartItems.splice(cartItems.indexOf(item), 1)
         }
 
+        saveCart()
+        renderCart(cartItems)
+        updateCartCount()
+        countCartTotal()
+    })
+    orderButton.addEventListener('click', () => {
+        orderCart()
         saveCart()
         renderCart(cartItems)
         updateCartCount()
