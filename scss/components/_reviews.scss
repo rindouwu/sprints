@@ -73,6 +73,19 @@
       }
     }
   }
+
+  @media(max-width: 768px) {
+    padding-top: 60px;
+    &__title { font-size: 28px; padding-bottom: 40px; }
+    &__action-text { font-size: 14px; }
+    &__slider { margin-bottom: 80px; }
+    &__slider-btn {
+      &--prev { left: -10px; }
+      &--next { right: -10px; }
+
+      width: 40px; height: 40px;
+    }
+  }
 }
 
 .review {
@@ -88,6 +101,7 @@
   &::after {
     content: '';
     position: absolute;
+    z-index: -1;
     top: 0;
     bottom: 0;
     right: 10%;
@@ -150,6 +164,20 @@
   &__star {
     width: 12px;
     height: 12px;
+  }
+
+  @media(max-width: 1024px) { flex: 0 0 calc((100% - 33px) / 2); }
+  @media(max-width: 768px) {
+    &__body {
+      max-width: 280px;
+    }
+  }
+  @media(max-width: 576px) {
+    flex: 0 0 90%;
+
+    &__body {
+      max-width: 260px;
+    }
   }
 }
 

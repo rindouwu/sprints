@@ -62,4 +62,15 @@
       transition: v.$transition-normal;
     }
   }
+
+  @media(max-width: 1024px) {
+    &__inner { flex-direction: column; gap: 40px; }
+    &__title { min-width: 0; }
+  }
+  @media(max-width: 768px) {
+    margin-top: 60px;
+    &__advantages { flex-direction: column; gap: 0; }
+    &__advantage { padding-bottom: 40px; }
+    &__title { font-size: 28px; }
+  }
 }

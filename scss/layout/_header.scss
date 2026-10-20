@@ -44,4 +44,10 @@
       transform: scale(0.8);
     }
   }
+
+  @media(max-width: 768px) {
+    &__nav { display: none; }
+    &__logo { font-size: 22px; }
+    height: 60px;
+  }
 }

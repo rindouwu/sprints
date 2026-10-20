@@ -117,4 +117,21 @@
       opacity: 1;
     }
   }
+
+  @media(max-width: 1024px) {
+    padding-top: 80px;
+    &__inner { padding: 0 40px; gap: 60px; }
+    &__nav-wrap { gap: 60px; }
+  }
+  @media(max-width: 768px) {
+    padding-top: 60px;
+    &__top { flex-direction: column; gap: 40px; }
+    &__nav-wrap { flex-wrap: wrap; gap: 40px; }
+    &__credits { flex-direction: column; gap: 15px; }
+  }
+  @media(max-width: 576px) {
+    padding-top: 40px;
+    &__inner { padding: 0 16px; }
+    &__legal { flex-direction: column; gap: 10px; }
+  }
 }
