@@ -36,10 +36,30 @@
     gap: 15px;
     padding-top: 25px;
     cursor: pointer;
+    transition: v.$transition-normal;
+
+    &:hover {
+      opacity: .6;
+      .why-us__more-info--arrow {
+        transform: translateX(5px);
+      }
+    }
+    &:active {
+      .why-us__more-info--text {
+        color: v.$text-view-more-active;
+      }
+      .why-us__more-info--arrow {
+        color: v.$text-view-more-active;
+      }
+    }
 
     &--text {
       color: v.$text-color-accent;
       font-weight: v.$fw-medium;
+    }
+    &--arrow {
+      color: v.$text-color-accent;
+      transition: v.$transition-normal;
     }
   }
 }

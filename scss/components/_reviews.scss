@@ -33,6 +33,9 @@
     gap: 33px;
     transition: transform .4s ease;
   }
+  &__slider-icon {
+    transition: v.$transition-normal;
+  }
   &__slider-btn {
     position: absolute;
     top: 50%;
@@ -45,9 +48,30 @@
     align-items: center;
     background-color: v.$bg-primary;
     border-radius: 50%;
+    transition: v.$transition-normal;
 
     &--prev { left: -24px; }
     &--next { right: -24px; }
+
+    &:hover {
+      background-color: v.$slider-btn-hover;
+
+      &.reviews__slider-btn--prev .reviews__slider-icon {
+        transform: translateX(-3px);
+      }
+      &.reviews__slider-btn--next .reviews__slider-icon {
+        transform: translateX(3px);
+      }
+    }
+    &:active {
+      background-color: v.$slider-btn-active;
+      color: #fff;
+
+      &.reviews__slider-btn--prev .reviews__slider-icon,
+      &.reviews__slider-btn--next .reviews__slider-icon {
+        transform: translateX(0);
+      }
+    }
   }
 }
 

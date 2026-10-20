@@ -35,4 +35,13 @@
       background-color: v.$text-color-accent;
     }
   }
+  &__cart-icon {
+    transition: v.$transition-normal;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+  }
 }

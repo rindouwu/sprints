@@ -11,7 +11,11 @@ export function renderCart(cartItems) {
                 <div class="cart__item-info">
                     <div class="cart__item-info-top">
                         <h3 class="cart__item-title">${item.title}</h3>
-                        <button class="cart__item-close-btn" type="button"><img src="assets/icons/cart/cross-secondary.svg" alt=""></button>
+                        <button class="cart__item-close-btn" type="button">
+                            <svg class="icon icon__cross-secondary" width="10" height="10">
+                                <use href="#cross-secondary"></use>
+                            </svg>
+                        </button>
                     </div>
                     <p class="cart__item-category">${item.categoryName}</p>
                     <div class="cart__rating">

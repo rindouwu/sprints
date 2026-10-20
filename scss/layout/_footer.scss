@@ -52,10 +52,31 @@
     display: flex;
     align-items: center;
     gap: 15px;
+
+    &.footer__item:hover,
+    &:hover {
+      opacity: 1;
+      color: #233549;
+      .footer__icon {
+        color: #233549;
+      }
+    }
+  }
+  &__icon {
+    color: #1E2833;
+    transition: color v.$transition-normal;
   }
   &__item {
     opacity: .8;
     font-weight: v.$fw-medium;
+    transition: opacity v.$transition-normal;
+
+    &:hover {
+      opacity: .6;
+    }
+    &:active {
+      opacity: .8;
+    }
   }
   &__bottom {
     padding-bottom: 60px;
@@ -75,5 +96,25 @@
     font-weight: v.$fw-medium;
     line-height: 160%;
     opacity: .8;
+  }
+  &__terms {
+    transition: opacity v.$transition-normal;
+
+    &:hover {
+      opacity: .8;
+    }
+    &:active {
+      opacity: 1;
+    }
+  }
+  &__privacy {
+    transition: opacity v.$transition-normal;
+
+    &:hover {
+      opacity: .8;
+    }
+    &:active {
+      opacity: 1;
+    }
   }
 }
