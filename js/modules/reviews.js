@@ -5,7 +5,10 @@ export function renderReviews() {
     if(!reviewsTrack) return
 
     reviewsTrack.innerHTML = reviews.map((review) => `
-        <article class="review review--${review.id}">
+        <article 
+            class="review"
+            style="background-image: url(${review.background})"
+        >
             <div class="review__body">
                 <img class="review__avatar" src="${review.avatar}" alt="${review.name}">
                 <h3 class="review__name">${review.name}</h3>

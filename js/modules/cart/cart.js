@@ -1,4 +1,4 @@
-import { products } from '../../data/products.js';
+import products from '../../data/products.js';
 import { saveCart, loadCart } from "./cart-storage.js";
 import { renderCart, updateCartCount, countCartTotal } from "./cart-render.js";
 

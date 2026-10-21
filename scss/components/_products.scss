@@ -46,6 +46,21 @@
       background-color: v.$card-top-color;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 50%;
+        height: 60px;
+
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        filter: blur(12px);
+      }
     }
     &-image {
       position: absolute;
@@ -110,6 +125,7 @@
   }
   &__slider-btn {
     @include m.slider-button;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
     width: 50px;
     height: 50px;

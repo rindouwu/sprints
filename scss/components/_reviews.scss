@@ -38,7 +38,8 @@
     transition: v.$transition-normal;
   }
   &__slider-btn {
-    @include m.slider-button;
+    @include m.slider-button(40%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     width: 50px;
     height: 50px;
 
@@ -85,6 +86,7 @@
   min-width: 0;
   display: flex;
   justify-content: center;
+  @include m.image-cover;
 
   &::after {
     content: '';
@@ -165,17 +167,4 @@
       max-width: 260px;
     }
   }
-}
-
-.review--1 {
-  background-image: url('../../assets/images/reviews/review-1.png');
-  @include m.image-cover;
-}
-.review--2 {
-  background-image: url('../../assets/images/reviews/review-2.png');
-  @include m.image-cover;
-}
-.review--3 {
-  background-image: url('../../assets/images/reviews/review-3.png');
-  @include m.image-cover;
 }

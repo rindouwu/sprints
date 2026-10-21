@@ -1,4 +1,4 @@
-export const products = [
+const products = [
     {
         id: 'chair-1',
         title: 'Sakarias Armchair',
@@ -54,6 +54,24 @@ export const products = [
         rating: 5
     },
     {
+        id: 'chair-7',
+        title: 'Nyantuy Chair 7',
+        category: 'chair',
+        categoryName: 'Chair',
+        price: 921,
+        image: 'assets/images/chairs/chair-4.png',
+        rating: 5
+    },
+    {
+        id: 'chair-8',
+        title: 'Nyantuy Chair 8',
+        category: 'chair',
+        categoryName: 'Chair',
+        price: 921,
+        image: 'assets/images/chairs/chair-4.png',
+        rating: 5
+    },
+    {
         id: 'bed-1',
         title: 'Nyantuy Bed',
         category: 'beds',
@@ -81,3 +99,4 @@ export const products = [
         rating: 5
     },
 ]
+export default products

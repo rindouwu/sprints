@@ -31,11 +31,12 @@
       border: 1px solid rgba(#FFFFFF, 0.6);
       border-radius: v.$radius-lg;
       background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
 
       &::placeholder {
         font-size: 18px;
         color: v.$text-color-primary;
-        filter: opacity(0.8);
+        opacity: .8;
         line-height: 150%;
       }
       &:focus {

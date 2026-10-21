@@ -2,7 +2,7 @@
 
 .why-us {
   color: v.$text-color-secondary;
-  margin-top: 120px;
+  padding-top: 120px;
 
   &__inner {
     display: flex;
@@ -68,7 +68,7 @@
     &__title { min-width: 0; }
   }
   @media(max-width: 768px) {
-    margin-top: 60px;
+    padding-top: 60px;
     &__advantages { flex-direction: column; gap: 0; }
     &__advantage { padding-bottom: 40px; }
     &__title { font-size: 28px; }

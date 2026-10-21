@@ -1,4 +1,4 @@
-import { products } from '../data/products.js'
+import products from '../data/products.js'
 
 export function initProducts() {
     const productsGrid = document.querySelector('.products__grid')
@@ -14,9 +14,9 @@ export function initProducts() {
             <article class="products__card" data-id="${product.id}" data-category="${product.category}">
                 <div class="products__card-top">
                     <img
-                            class="products__card-image"
-                            src="${product.image}"
-                            alt="${product.title}"
+                        class="products__card-image"
+                        src="${product.image}"
+                        alt="${product.title}"
                     >
                 </div>
                 <div class="products__card-body">
