@@ -8,7 +8,6 @@ export function initSlider({sliderSelector, trackSelector, cardSelector, prevBut
     if(!track || !prevButton || !nextButton) return
 
     const getCards = () => Array.from(track.querySelectorAll(cardSelector))
-
     let currentIndex = 0
 
     function updateSlider() {
@@ -19,7 +18,7 @@ export function initSlider({sliderSelector, trackSelector, cardSelector, prevBut
         const cardWidth = cards[0].getBoundingClientRect().width
         const step = cardWidth + gap
         const maxOffset = Math.max(0, track.scrollWidth - track.parentElement.clientWidth)
-        const maxIndex = step > 0 ? Math.ceil(maxOffset / step) : 0
+        const maxIndex = step > 0 ? Math.round(maxOffset / step) : 0
 
         currentIndex = Math.max(0, Math.min(currentIndex, maxIndex))
         track.style.transform = `translateX(-${currentIndex * step}px)`
@@ -36,6 +35,12 @@ export function initSlider({sliderSelector, trackSelector, cardSelector, prevBut
         currentIndex++
         updateSlider()
     })
+    const observer = new MutationObserver(() => {
+        currentIndex = 0
+        updateSlider()
+    })
+    observer.observe(track, {childList: true})
+
     window.addEventListener('resize', updateSlider)
     updateSlider()
 }
