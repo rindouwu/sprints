@@ -1,0 +1,53 @@
+@use '../abstracts/variables' as v;
+
+.header {
+  flex-shrink: 0;
+  height: 80px;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+  }
+  &__logo {
+    font-size: 28px;
+    font-weight: v.$fw-bold;
+  }
+  &__nav {
+    display: flex;
+    gap: 60px;
+  }
+  &__link {
+    font-size: 18px;
+  }
+  &__cart {
+    position: relative;
+
+    &-counter {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: 20px;
+      text-align: center;
+      font-weight: v.$fw-bold;
+      border-radius: 50%;
+      background-color: v.$text-color-accent;
+    }
+  }
+  &__cart-icon {
+    transition: v.$transition-normal;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+
+  @media(max-width: 768px) {
+    &__nav { display: none; }
+    &__logo { font-size: 22px; }
+    height: 60px;
+  }
+}
