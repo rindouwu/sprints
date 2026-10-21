@@ -1,0 +1,49 @@
+@use './variables' as v;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin image-cover($position: center) {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: $position;
+}
+
+@mixin circle-button($size) {
+  width: $size;
+  height: $size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+@mixin slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: v.$bg-primary;
+  border-radius: 50%;
+  transition: v.$transition-normal;
+}
+
+@mixin slider-button-position($side, $offset: -24px) {
+  #{$side}: $offset;
+}
+
+@mixin mobile-slider-button($offset: -10px, $size: 40px) {
+  width: $size;
+  height: $size;
+
+  &__prev { left: $offset; }
+  &__next { right: $offset; }
+}

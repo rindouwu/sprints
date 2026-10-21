@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 .reviews {
   padding-top: 100px;
@@ -37,21 +38,12 @@
     transition: v.$transition-normal;
   }
   &__slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
+    @include m.slider-button;
     width: 50px;
     height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: v.$bg-primary;
-    border-radius: 50%;
-    transition: v.$transition-normal;
 
-    &--prev { left: -24px; }
-    &--next { right: -24px; }
+    &--prev { @include m.slider-button-position(left) }
+    &--next { @include m.slider-button-position(right) }
 
     &:hover {
       background-color: v.$slider-btn-hover;
@@ -80,10 +72,7 @@
     &__action-text { font-size: 14px; }
     &__slider { margin-bottom: 80px; }
     &__slider-btn {
-      &--prev { left: -10px; }
-      &--next { right: -10px; }
-
-      width: 40px; height: 40px;
+      @include m.mobile-slider-button;
     }
   }
 }
@@ -96,7 +85,6 @@
   min-width: 0;
   display: flex;
   justify-content: center;
-
 
   &::after {
     content: '';
@@ -125,10 +113,8 @@
   }
   &__body {
     position: absolute;
-    display: flex;
+    @include m.flex-center;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 0 40px;
     bottom: 18px;
     max-width: 330px;
@@ -183,19 +169,13 @@
 
 .review--1 {
   background-image: url('../../assets/images/reviews/review-1.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  @include m.image-cover;
 }
 .review--2 {
   background-image: url('../../assets/images/reviews/review-2.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  @include m.image-cover;
 }
 .review--3 {
   background-image: url('../../assets/images/reviews/review-3.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  @include m.image-cover;
 }

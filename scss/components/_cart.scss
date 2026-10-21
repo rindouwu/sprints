@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
 
 .cart-overlay {
   position: fixed;
@@ -66,17 +67,11 @@
     font-size: 12px;
     border-radius: v.$radius-md;
     font-weight: v.$fw-bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include m.flex-center;
   }
   &__close-btn {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    @include m.circle-button(32px);
+
     border: v.$border-cart-close;
     background-color: v.$cart-item-color;
     transition: v.$transition-normal;
@@ -118,12 +113,7 @@
       height: 100px;
     }
     &-close-btn {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include m.circle-button(22px);
       transition: background-color v.$transition-normal;
 
       &:hover {
@@ -243,8 +233,7 @@
 }
 
 .quantity {
-  display: flex;
-  align-items: center;
+  @include m.flex-center;
   padding: 0 5px;
   border: v.$border-cart-basic;
   background-color: v.$cart-color-accent;
@@ -272,9 +261,7 @@
 
 
     &--minus {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include m.flex-center;
       border-radius: v.$radius-sm;
       transition: v.$transition-normal;
 
@@ -288,9 +275,7 @@
       }
     }
     &--plus {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include m.flex-center;
       border-radius: v.$radius-sm;
       transition: v.$transition-normal;
 
