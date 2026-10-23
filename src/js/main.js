@@ -6,6 +6,19 @@ function createTitle(titleText) {
     title.textContent = titleText
     formWrapper.append(title)
 }
+function createInput(fields) {
+    fields.forEach(field => {
+        const label = document.createElement('label')
+        const input = document.createElement('input')
+
+        if(field.label) label.textContent = field.label
+        if(field.input.type) input.type = field.input.type
+        if(field.input.placeholder) input.placeholder = field.input.placeholder
+        if(field.input.required) input.required = field.input.required
+
+        formWrapper.append(label, input)
+    })
+}
 
 jsonFile.addEventListener('change', () => {
     const file = jsonFile.files[0]
@@ -18,6 +31,10 @@ jsonFile.addEventListener('change', () => {
         console.log(json)
 
         if(json.name) { createTitle(json.name) }
+
+        const fields = Array.from(json.fields)
+        createInput(fields)
+
     })
     reader.readAsText(file)
 })
