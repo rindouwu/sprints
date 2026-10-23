@@ -19,6 +19,14 @@ function createInput(fields) {
         formWrapper.append(label)
     })
 }
+function createButton(buttons) {
+    buttons.forEach((button, index) => {
+        const buttonElement = document.createElement('button')
+        buttonElement.textContent = button.text
+        buttonElement.type = index === 0 ? 'submit' : 'button'
+        formWrapper.append(buttonElement)
+    })
+}
 function createReferences(references) {
     references.forEach(reference => {
         if(reference.input) {
@@ -64,9 +72,11 @@ jsonFile.addEventListener('change', () => {
 
         const fields = Array.from(json.fields)
         const references = Array.from(json.references)
-        createInput(fields)
-        createReferences(references)
+        const buttons = Array.from(json.buttons)
 
+        if(fields) { createInput(fields) }
+        if(references) { createReferences(references) }
+        if(buttons) { createButton(buttons) }
     })
     reader.readAsText(file)
 })
