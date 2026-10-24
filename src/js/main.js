@@ -11,7 +11,11 @@ function createInput(fields, form) {
         const label = document.createElement('label')
         const input = document.createElement('input')
 
-        if(field.label) label.textContent = field.label
+        input.name = (field.label || field.input.placeholder || `field${fields.indexOf(field) + 1}`).toLowerCase()
+
+        if(field.label) {
+            label.textContent = field.label
+        }
         if(field.input.type) input.type = field.input.type
         if(field.input.placeholder) input.placeholder = field.input.placeholder
         if(field.input.required) input.required = field.input.required
@@ -68,6 +72,9 @@ jsonFile.addEventListener('change', () => {
         const form = document.createElement('form')
         form.addEventListener('submit', (e) => {
             e.preventDefault()
+            const formData = new FormData(form)
+            const data = Object.fromEntries(formData)
+            console.log(data)
             alert('Форма отправлена')
         })
         console.log(json)
