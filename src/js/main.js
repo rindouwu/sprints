@@ -113,10 +113,13 @@ jsonFile.addEventListener('change', () => {
             e.preventDefault()
             const formData = new FormData(form)
             const data = Object.fromEntries(formData)
+
+            form.querySelectorAll('select[multiple]').forEach(select => {
+                data[select.name] = Array.from(select.selectedOptions).map(option => option.value)
+            })
             console.log(data)
             alert('Форма отправлена')
         })
-        console.log(json)
         formWrapper.innerHTML = ''
         formWrapper.append(form)
 
