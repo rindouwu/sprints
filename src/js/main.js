@@ -12,6 +12,18 @@ function createInput(fields, form) {
         let input
         if(field.input.type === 'textarea') {
             input = document.createElement('textarea')
+        } else if(field.input.type === 'technology') {
+            input = document.createElement('select')
+
+            if(field.input.multiple) {
+                input.multiple = true
+            }
+            field.input.technologies.forEach(tech => {
+                const option = document.createElement('option')
+                option.value = tech
+                option.textContent = tech
+                input.append(option)
+            })
         } else {
             input = document.createElement('input')
         }
@@ -19,11 +31,32 @@ function createInput(fields, form) {
         input.name = (field.label || field.input.placeholder || `field${fields.indexOf(field) + 1}`).toLowerCase()
 
         if(field.label) {
-            label.textContent = field.label
+            label.prepend(field.label + ' ')
         }
-        if(field.input.type && field.input.type !== 'textarea') input.type = field.input.type
+        if(field.input.type && field.input.type !== 'textarea' && field.input.type !== 'technology') input.type = field.input.type
         if(field.input.placeholder) input.placeholder = field.input.placeholder
         if(field.input.required) input.required = field.input.required
+
+        if(field.input.type === 'color' && field.input.colors) {
+            field.input.colors.forEach((color) => {
+                const colorOption = document.createElement('button')
+                colorOption.type = 'button'
+                colorOption.style.width = '24px'
+                colorOption.style.height = '24px'
+                colorOption.style.borderRadius = '50%'
+                colorOption.style.backgroundColor = color
+                colorOption.style.border = 'none'
+                colorOption.style.margin = '4px'
+                colorOption.title = color
+
+                colorOption.addEventListener('click', () => {
+                    input.value = color
+                })
+
+                label.append(colorOption)
+            })
+        }
+
         label.append(input)
         form.append(label)
     })
@@ -43,6 +76,7 @@ function createReferences(references, form) {
         if(reference.input) {
             const input = document.createElement('input')
             input.type = reference.input.type
+            input.name = `reference${references.indexOf(reference) + 1}`
 
             if(reference.input.required) input.required = true
             if(reference.input.checked !== undefined) input.checked = reference.input.checked
