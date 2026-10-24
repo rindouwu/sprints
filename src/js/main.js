@@ -1,12 +1,12 @@
 const formWrapper = document.querySelector('.form-wrapper')
 const jsonFile = document.getElementById('json')
 
-function createTitle(titleText) {
+function createTitle(titleText, form) {
     const title = document.createElement('h2')
     title.textContent = titleText
-    formWrapper.append(title)
+    form.append(title)
 }
-function createInput(fields) {
+function createInput(fields, form) {
     fields.forEach(field => {
         const label = document.createElement('label')
         const input = document.createElement('input')
@@ -16,58 +16,43 @@ function createInput(fields) {
         if(field.input.placeholder) input.placeholder = field.input.placeholder
         if(field.input.required) input.required = field.input.required
         label.append(input)
-        formWrapper.append(label)
+        form.append(label)
     })
 }
-function createButton(buttons) {
+function createButton(buttons, form) {
     buttons.forEach((button, index) => {
         const buttonElement = document.createElement('button')
         buttonElement.textContent = button.text
         buttonElement.type = index === 0 ? 'submit' : 'button'
-        formWrapper.append(buttonElement)
+        form.append(buttonElement)
     })
 }
-function createReferences(references) {
+function createReferences(references, form) {
     references.forEach(reference => {
-        let isInput = false
         const label = document.createElement('label')
+
         if(reference.input) {
-            isInput = true
             const input = document.createElement('input')
             input.type = reference.input.type
 
             if(reference.input.required) input.required = true
-            if(reference.input.checked) input.checked = true
+            if(reference.input.checked !== undefined) input.checked = reference.input.checked
             label.append(input)
+            form.append(label)
         }
         if(reference.text_without_ref) {
             const withoutRef = document.createElement('span')
             withoutRef.textContent = reference.text_without_ref + ' '
-            if(!isInput) {
-                formWrapper.append(withoutRef)
-            } else {
-                label.append(withoutRef)
-            }
+            form.append(withoutRef)
         }
         if(reference.ref && reference.text) {
             const ref = document.createElement('a')
             ref.textContent = reference.text
             ref.href = reference.ref
-            if(!isInput) {
-                formWrapper.append(ref)
-            } else {
-                label.append(ref)
-            }
+            form.append(ref)
         } else if(reference.text) {
             const text = reference.text
-            if(!isInput) {
-                formWrapper.append(text)
-            } else {
-                label.append(text)
-            }
-        }
-        if(isInput) {
-            formWrapper.append(label)
+            form.append(text)
         }
     })
 }
@@ -80,17 +65,24 @@ jsonFile.addEventListener('change', () => {
 
     reader.addEventListener('load', () => {
         const json = JSON.parse(reader.result)
+        const form = document.createElement('form')
+        form.addEventListener('submit', (e) => {
+            e.preventDefault()
+            alert('Форма отправлена')
+        })
         console.log(json)
+        formWrapper.innerHTML = ''
+        formWrapper.append(form)
 
-        if(json.name) { createTitle(json.name) }
+        if(json.name) { createTitle(json.name, form) }
 
         const fields = json.fields || []
         const references = json.references || []
         const buttons = json.buttons || []
 
-        createInput(fields)
-        createReferences(references)
-        createButton(buttons)
+        createInput(fields, form)
+        createReferences(references, form)
+        createButton(buttons, form)
     })
     reader.readAsText(file)
 })
