@@ -9,14 +9,19 @@ function createTitle(titleText, form) {
 function createInput(fields, form) {
     fields.forEach(field => {
         const label = document.createElement('label')
-        const input = document.createElement('input')
+        let input
+        if(field.input.type === 'textarea') {
+            input = document.createElement('textarea')
+        } else {
+            input = document.createElement('input')
+        }
 
         input.name = (field.label || field.input.placeholder || `field${fields.indexOf(field) + 1}`).toLowerCase()
 
         if(field.label) {
             label.textContent = field.label
         }
-        if(field.input.type) input.type = field.input.type
+        if(field.input.type && field.input.type !== 'textarea') input.type = field.input.type
         if(field.input.placeholder) input.placeholder = field.input.placeholder
         if(field.input.required) input.required = field.input.required
         label.append(input)
