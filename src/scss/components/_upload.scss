@@ -49,6 +49,7 @@
     border-radius: 12px;
     font: inherit;
     cursor: pointer;
+    transition: border-color .2s ease;
 
     &::file-selector-button {
       margin-right: 12px;
