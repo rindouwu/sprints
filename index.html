@@ -13,9 +13,26 @@
 <body>
     <section class="grid">
         <div class="grid__item">
-            <h1>Парсер формы</h1>
-            <label for="json">Приложите json-файл</label>
-            <input id="json" type="file" accept=".json">
+            <div class="upload">
+                <span class="upload__badge">JSON PARSER</span>
+                <h1 class="upload__title">Парсер формы</h1>
+                <p class="upload__description">
+                    Загрузите json файл, чтобы создать форму
+                </p>
+
+                <div class="upload__field">
+                    <label class="upload__label" for="json">
+                        Выберите JSON-файл
+                    </label>
+                    <input
+                        class="upload__input"
+                        id="json"
+                        type="file"
+                        accept=".json"
+                    >
+                    <span class="upload__hint">Поддерживается только .json</span>
+                </div>
+            </div>
         </div>
         <div class="grid__item">
             <div class="form-wrapper"></div>
