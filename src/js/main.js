@@ -86,6 +86,7 @@ function createButton(buttons, form) {
 function createReferences(references, form) {
     references.forEach(reference => {
         const label = document.createElement('label')
+        let withoutRef
 
         if(reference.input) {
             const input = document.createElement('input')
@@ -98,7 +99,7 @@ function createReferences(references, form) {
             form.append(label)
         }
         if(reference.text_without_ref) {
-            const withoutRef = document.createElement('span')
+            withoutRef = document.createElement('span')
             withoutRef.textContent = reference.text_without_ref + ' '
             form.append(withoutRef)
         }
@@ -106,7 +107,13 @@ function createReferences(references, form) {
             const ref = document.createElement('a')
             ref.textContent = reference.text
             ref.href = reference.ref
-            form.append(ref)
+
+            if(withoutRef) {
+                ref.style.marginLeft = '4px'
+                withoutRef.append(ref)
+            } else {
+                form.append(ref)
+            }
         } else if(reference.text) {
             const text = reference.text
             form.append(text)

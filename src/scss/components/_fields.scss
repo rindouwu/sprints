@@ -12,6 +12,11 @@
       font-size: 0.875rem;
       line-height: 1.5;
     }
+    label:has(input[type="checkbox"], input[type="radio"]) {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
     input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="file"]),
     textarea,
     select {
