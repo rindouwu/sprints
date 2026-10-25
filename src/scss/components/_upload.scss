@@ -14,19 +14,19 @@
     color: v.$color-accent;
     background: #EEF2EC;
     border-radius: 8px;
-    font-size: 11px;
+    font-size: 0.69rem;
     font-weight: 700;
     letter-spacing: 1.2px;
   }
   &__title {
     margin: 0 0 12px;
     color: v.$color-text;
-    font-size: 32px;
+    font-size: 2rem;
   }
   &__description {
     margin: 0 0 32px;
     color: v.$color-text-muted;
-    font-size: 15px;
+    font-size: 0.94rem;
     line-height: 1.6;
   }
   &__field {
@@ -36,7 +36,7 @@
   }
   &__label {
     color: v.$color-text;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
   }
   &__input {
@@ -59,7 +59,7 @@
       border: none;
       border-radius: 8px;
       font: inherit;
-      font-size: 13px;
+      font-size: 0.813rem;
       cursor: pointer;
     }
     &:hover {
@@ -72,6 +72,6 @@
   }
   &__hint {
     color: v.$color-text-muted;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
