@@ -74,4 +74,8 @@
     color: v.$color-text-muted;
     font-size: 0.75rem;
   }
+  &__error {
+    color: red;
+    font-size: 0.875rem;
+  }
 }

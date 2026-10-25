@@ -1,6 +1,20 @@
 const formWrapper = document.querySelector('.form-wrapper')
 const jsonFile = document.getElementById('json')
+const upload = document.querySelector('.upload')
 
+function showUploadError(message) {
+    const upload = document.querySelector('.upload')
+    const oldError = document.querySelector('.upload__error')
+
+    if(oldError) {
+        oldError.remove()
+    }
+
+    const errorElement = document.createElement('p')
+    errorElement.textContent = message
+    errorElement.classList.add('upload__error')
+    upload.append(errorElement)
+}
 function createTitle(titleText, form) {
     const title = document.createElement('h2')
     title.textContent = titleText
@@ -104,10 +118,33 @@ jsonFile.addEventListener('change', () => {
     const file = jsonFile.files[0]
     if(!file) return
 
+    if(!file.name.toLowerCase().endsWith('.json')) {
+        showUploadError('Выберите файл с расширением .json')
+        jsonFile.value = ''
+        return
+    }
+
     const reader = new FileReader()
 
+    reader.addEventListener('error', () => {
+        showUploadError('Не удалось прочитать файл')
+        jsonFile.value = ''
+    })
     reader.addEventListener('load', () => {
-        const json = JSON.parse(reader.result)
+        let json
+        try {
+            json = JSON.parse(reader.result)
+        } catch (error) {
+            showUploadError('Файл содержит некорректный json')
+            jsonFile.value = ''
+            return
+        }
+
+        const oldError = upload.querySelector('.upload__error')
+        if(oldError) {
+            oldError.remove()
+        }
+
         const form = document.createElement('form')
         form.addEventListener('submit', (e) => {
             e.preventDefault()
