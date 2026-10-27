@@ -1,20 +1,34 @@
 const formWrapper = document.querySelector('.form-wrapper')
-const jsonFile = document.getElementById('json')
-const upload = document.querySelector('.upload')
 
-function showUploadError(message) {
-    const upload = document.querySelector('.upload')
-    const oldError = document.querySelector('.upload__error')
+export function renderForm(json) {
+    const form = document.createElement('form')
+    form.addEventListener('submit', (e) => handleFormSubmit(e, form))
+    formWrapper.innerHTML = ''
+    formWrapper.append(form)
 
-    if(oldError) {
-        oldError.remove()
-    }
+    if(json.name) { createTitle(json.name, form) }
 
-    const errorElement = document.createElement('p')
-    errorElement.textContent = message
-    errorElement.classList.add('upload__error')
-    upload.append(errorElement)
+    const fields = json.fields || []
+    const references = json.references || []
+    const buttons = json.buttons || []
+
+    createInput(fields, form)
+    createReferences(references, form)
+    createButton(buttons, form)
 }
+
+function handleFormSubmit(e, form) {
+    e.preventDefault()
+    const formData = new FormData(form)
+    const data = Object.fromEntries(formData)
+
+    form.querySelectorAll('select[multiple]').forEach(select => {
+        data[select.name] = Array.from(select.selectedOptions).map(option => option.value)
+    })
+    console.log(data)
+    alert('Форма отправлена, обьект выведен в консоль')
+}
+
 function createTitle(titleText, form) {
     const title = document.createElement('h2')
     title.textContent = titleText
@@ -50,6 +64,7 @@ function createInput(fields, form) {
         if(field.input.type && field.input.type !== 'textarea' && field.input.type !== 'technology') input.type = field.input.type
         if(field.input.placeholder) input.placeholder = field.input.placeholder
         if(field.input.required) input.required = field.input.required
+        if(field.input.checked !== undefined) input.checked = field.input.checked
 
         if(field.input.type === 'color' && field.input.colors) {
             field.input.colors.forEach((color) => {
@@ -120,62 +135,3 @@ function createReferences(references, form) {
         }
     })
 }
-
-jsonFile.addEventListener('change', () => {
-    const file = jsonFile.files[0]
-    if(!file) return
-
-    if(!file.name.toLowerCase().endsWith('.json')) {
-        showUploadError('Выберите файл с расширением .json')
-        jsonFile.value = ''
-        return
-    }
-
-    const reader = new FileReader()
-
-    reader.addEventListener('error', () => {
-        showUploadError('Не удалось прочитать файл')
-        jsonFile.value = ''
-    })
-    reader.addEventListener('load', () => {
-        let json
-        try {
-            json = JSON.parse(reader.result)
-        } catch (error) {
-            showUploadError('Файл содержит некорректный json')
-            jsonFile.value = ''
-            return
-        }
-
-        const oldError = upload.querySelector('.upload__error')
-        if(oldError) {
-            oldError.remove()
-        }
-
-        const form = document.createElement('form')
-        form.addEventListener('submit', (e) => {
-            e.preventDefault()
-            const formData = new FormData(form)
-            const data = Object.fromEntries(formData)
-
-            form.querySelectorAll('select[multiple]').forEach(select => {
-                data[select.name] = Array.from(select.selectedOptions).map(option => option.value)
-            })
-            console.log(data)
-            alert('Форма отправлена')
-        })
-        formWrapper.innerHTML = ''
-        formWrapper.append(form)
-
-        if(json.name) { createTitle(json.name, form) }
-
-        const fields = json.fields || []
-        const references = json.references || []
-        const buttons = json.buttons || []
-
-        createInput(fields, form)
-        createReferences(references, form)
-        createButton(buttons, form)
-    })
-    reader.readAsText(file)
-})
