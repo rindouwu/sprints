@@ -29,6 +29,28 @@ function handleFormSubmit(e, form) {
     alert('Форма отправлена, обьект выведен в консоль')
 }
 
+function applyMask(value, mask) {
+    let digits = value.replace(/\D/g, '')
+    if(mask.startsWith('+7') && digits.startsWith('7')) {
+        digits = digits.slice(1)
+    }
+    let result = ''
+    let digitIndex = 0
+    for(let i = 0; i < mask.length; i++) {
+        if(mask[i] === '9') {
+            if(digitIndex >= digits.length) break
+
+            result += digits[digitIndex]
+            digitIndex++
+        } else {
+            if(digitIndex >= digits.length) break
+
+            result += mask[i]
+        }
+    }
+    return result
+}
+
 function createTitle(titleText, form) {
     const title = document.createElement('h2')
     title.textContent = titleText
@@ -58,10 +80,16 @@ function createInput(fields, form) {
 
         input.name = (field.label || field.input.placeholder || `field${fields.indexOf(field) + 1}`).toLowerCase()
 
+        if(field.input.mask) {
+            const mask = field.input.mask
+            input.addEventListener('input', () => {
+                input.value = applyMask(input.value, mask)
+            })
+        }
         if(field.label) {
             label.prepend(field.label + ' ')
         }
-        if(field.input.type && field.input.type !== 'textarea' && field.input.type !== 'technology') input.type = field.input.type
+        if(field.input.type && field.input.type !== 'textarea' && field.input.type !== 'technology') input.type = field.input.mask ? 'text' : field.input.type
         if(field.input.placeholder) input.placeholder = field.input.placeholder
         if(field.input.required) input.required = field.input.required
         if(field.input.checked !== undefined) input.checked = field.input.checked
@@ -110,6 +138,11 @@ function createReferences(references, form) {
 
             if(reference.input.required) input.required = true
             if(reference.input.checked !== undefined) input.checked = reference.input.checked
+
+            if(reference.label) {
+                label.append(reference.label + ' ')
+            }
+
             label.append(input)
             form.append(label)
         }
