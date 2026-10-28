@@ -6,7 +6,12 @@
   border: 1px solid v.$color-border;
   border-radius: 20px;
   box-shadow: 0 12px 32px v.$color-shadow;
+  transition: background-color .2s, border-color .2s;
 
+  &--dragover {
+    background-color: #eaf4ff;
+    border: 2px dashed #3984d6;
+  }
   &__badge {
     display: inline-block;
     margin-bottom: 20px;

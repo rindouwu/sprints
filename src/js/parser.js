@@ -15,11 +15,7 @@ function showUploadError(message) {
     errorElement.classList.add('upload__error')
     upload.append(errorElement)
 }
-
-jsonFile.addEventListener('change', () => {
-    const file = jsonFile.files[0]
-    if(!file) return
-
+function readJsonFile(file) {
     if(!file.name.toLowerCase().endsWith('.json')) {
         showUploadError('Выберите файл с расширением .json')
         jsonFile.value = ''
@@ -51,4 +47,25 @@ jsonFile.addEventListener('change', () => {
         renderForm(json)
     })
     reader.readAsText(file)
+}
+
+jsonFile.addEventListener('change', () => {
+    const file = jsonFile.files[0]
+    if(file) readJsonFile(file)
+})
+upload.addEventListener('dragover', (e) => {
+    e.preventDefault()
+    upload.classList.add('upload--dragover')
+})
+upload.addEventListener('dragleave', (e) => {
+    if(!upload.contains(e.relatedTarget)) {
+        upload.classList.remove('upload--dragover')
+    }
+})
+upload.addEventListener('drop', (e) => {
+    e.preventDefault()
+    upload.classList.remove('upload--dragover')
+
+    const file = e.dataTransfer.files[0]
+    if(file) readJsonFile(file)
 })

@@ -17,7 +17,7 @@
                 <span class="upload__badge">JSON PARSER</span>
                 <h1 class="upload__title">Парсер формы</h1>
                 <p class="upload__description">
-                    Загрузите json файл, чтобы создать форму
+                    Загрузите или перетащите json файл, чтобы создать форму
                 </p>
 
                 <div class="upload__field">
@@ -35,7 +35,15 @@
             </div>
         </div>
         <div class="grid__item">
-            <div class="form-wrapper"></div>
+            <div class="form-wrapper">
+                <div class="empty-state">
+                    <div class="empty-state__icon"><img src="src/assets/img/document.png" alt="document"></div>
+                    <h2 class="empty-state__title">Пока здесь пусто</h2>
+                    <p class="empty-state__text">
+                        Загрузите json, чтобы сгенерировать форму
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 </body>
