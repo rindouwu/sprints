@@ -68,12 +68,14 @@ function createInput(fields, form) {
             if(field.input.multiple) {
                 input.multiple = true
             }
-            field.input.technologies.forEach(tech => {
-                const option = document.createElement('option')
-                option.value = tech
-                option.textContent = tech
-                input.append(option)
-            })
+            if(field.input.technologies) {
+                field.input.technologies.forEach(tech => {
+                    const option = document.createElement('option')
+                    option.value = tech
+                    option.textContent = tech
+                    input.append(option)
+                })
+            }
         } else {
             input = document.createElement('input')
         }
