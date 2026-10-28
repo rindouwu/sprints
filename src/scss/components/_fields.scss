@@ -1,0 +1,95 @@
+
+@use '../abstracts/variables' as v;
+
+.form-wrapper {
+  form {
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      color: v.$color-text;
+      font-weight: 600;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    label:has(input[type="checkbox"], input[type="radio"]) {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+    input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="file"]),
+    textarea,
+    select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 15px;
+      color: v.$color-text;
+      background: v.$color-bg;
+      border: 1px solid v.$color-bg;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      transition: border-color .2s ease, box-shadow .2s ease;
+
+      &:hover {
+        border-color: v.$color-accent-secondary;
+      }
+      &:focus {
+        outline: none;
+        border-color: v.$color-border-focus;
+        box-shadow: 0 0 0 3px v.$color-accent-shadow;
+      }
+      &::placeholder {
+        color: v.$color-text-muted;
+        opacity: .8;
+      }
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    select {
+      cursor: pointer;
+    }
+    input[type="file"] {
+      padding: 13px 15px;
+      border: 1px solid v.$color-border;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color .2s ease;
+
+      &::file-selector-button {
+        margin-right: 12px;
+        padding: 9px 12px;
+        border-radius: 10px;
+        background: v.$color-accent;
+        color: #FFFFFF;
+        cursor: pointer;
+        border: none;
+      }
+      &:hover {
+        border-color: v.$color-accent-secondary;
+      }
+    }
+    input[type="checkbox"],
+    input[type="radio"] {
+      accent-color: v.$color-accent;
+      cursor: pointer;
+    }
+    input[type="submit"], button[type="submit"], button {
+      width: 100%;
+      box-sizing: border-box;
+      background: v.$color-accent;
+      color: #fff;
+      padding: 12px 0;
+      font-weight: 600;
+      border: 1px solid v.$color-border;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background .2s ease;
+
+      &:hover {
+        background: v.$color-accent-secondary;
+      }
+    }
+  }
+}

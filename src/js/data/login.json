@@ -1,0 +1,25 @@
+{
+  "name": "Вход в систему",
+  "fields": [
+    {
+      "label": "Логин или email",
+      "input": {
+        "type": "text",
+        "placeholder": "Введите логин",
+        "required": true
+      }
+    },
+    {
+      "label": "Пароль",
+      "input": {
+        "type": "password",
+        "placeholder": "Введите пароль",
+        "required": true
+      }
+    }
+  ],
+  "buttons": [
+    { "text": "Войти" },
+    { "text": "Отмена" }
+  ]
+}

@@ -1,0 +1,86 @@
+@use '../abstracts/variables' as v;
+
+.upload {
+  padding: 28px;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px v.$color-shadow;
+  transition: background-color .2s, border-color .2s;
+
+  &--dragover {
+    background-color: #eaf4ff;
+    border: 2px dashed #3984d6;
+  }
+  &__badge {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 7px 11px;
+    color: v.$color-accent;
+    background: #EEF2EC;
+    border-radius: 8px;
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+  }
+  &__title {
+    margin: 0 0 12px;
+    color: v.$color-text;
+    font-size: 2rem;
+  }
+  &__description {
+    margin: 0 0 32px;
+    color: v.$color-text-muted;
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  &__label {
+    color: v.$color-text;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    color: v.$color-text;
+    background: v.$color-bg;
+    border: 1px solid v.$color-accent-secondary;
+    border-radius: 12px;
+    font: inherit;
+    cursor: pointer;
+    transition: border-color .2s ease;
+
+    &::file-selector-button {
+      margin-right: 12px;
+      padding: 9px 12px;
+      color: #FFFFFF;
+      background: v.$color-accent;
+      border: none;
+      border-radius: 8px;
+      font: inherit;
+      font-size: 0.813rem;
+      cursor: pointer;
+    }
+    &:hover {
+      border-color: v.$color-accent;
+    }
+    &:focus-visible {
+      outline: 2px solid v.$color-border-focus;
+      outline-offset: 3px;
+    }
+  }
+  &__hint {
+    color: v.$color-text-muted;
+    font-size: 0.75rem;
+  }
+  &__error {
+    color: red;
+    font-size: 0.875rem;
+  }
+}

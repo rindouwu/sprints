@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sprint2</title>
+
+    <link rel="stylesheet" href="src/scss/style.scss">
+    <script type="module" src="src/js/parser.js"></script>
+</head>
+<body>
+    <section class="grid">
+        <div class="grid__item">
+            <div class="upload">
+                <span class="upload__badge">JSON PARSER</span>
+                <h1 class="upload__title">Парсер формы</h1>
+                <p class="upload__description">
+                    Загрузите или перетащите json файл, чтобы создать форму
+                </p>
+
+                <div class="upload__field">
+                    <label class="upload__label" for="json">
+                        Выберите JSON-файл
+                    </label>
+                    <input
+                        class="upload__input"
+                        id="json"
+                        type="file"
+                        accept=".json"
+                    >
+                    <span class="upload__hint">Поддерживается только .json</span>
+                </div>
+            </div>
+        </div>
+        <div class="grid__item">
+            <div class="form-wrapper">
+                <div class="empty-state">
+                    <div class="empty-state__icon"><img src="src/assets/img/document.png" alt="document"></div>
+                    <h2 class="empty-state__title">Пока здесь пусто</h2>
+                    <p class="empty-state__text">
+                        Загрузите json, чтобы сгенерировать форму
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
