@@ -136,7 +136,7 @@
   }
   &__role {
     font-size: 12px;
-    filter: opacity(60%);
+    opacity: .6;
   }
   &__quote {
     font-size: 14px;
@@ -144,7 +144,7 @@
     overflow: hidden;
     height: 60px;
     margin-top: 10px;
-    filter: opacity(80%);
+    opacity: .8;
   }
   &__stars {
     margin-top: 20px;

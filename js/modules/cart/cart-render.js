@@ -7,7 +7,7 @@ export function renderCart(cartItems) {
     } else {
         cartBody.innerHTML = cartItems.map(item => `
             <article class="cart__item" data-id="${item.id}">
-                <img class="cart__item-img" src="${item.image}" alt="">
+                <img class="cart__item-img" src="${item.image}" alt="${item.title}">
                 <div class="cart__item-info">
                     <div class="cart__item-info-top">
                         <h3 class="cart__item-title">${item.title}</h3>
