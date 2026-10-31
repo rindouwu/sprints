@@ -1,0 +1,306 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  z-index: 1000;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  visibility: hidden;
+  transition: .3s ease;
+  cursor: pointer;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    overflow-y: hidden;
+    overscroll-behavior: contain;
+  }
+}
+
+.cart {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 400px;
+  max-width: 400px;
+  height: 100vh;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+  background-color: v.$cart-color-primary;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.is-open {
+    transform: translateX(0);
+  }
+  &__inner {
+    padding: 0 25px;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 23px;
+    border-bottom: v.$border-cart-basic;
+  }
+  &__title-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: v.$fw-bold;
+  }
+  &__badge {
+    background-color: v.$cart-badge-color;
+    color: v.$cart-badge-text-color;
+    height: 22px;
+    padding: 4px 11px;
+    font-size: 12px;
+    border-radius: v.$radius-md;
+    font-weight: v.$fw-bold;
+    @include m.flex-center;
+  }
+  &__close-btn {
+    @include m.circle-button(32px);
+
+    border: v.$border-cart-close;
+    background-color: v.$cart-item-color;
+    transition: v.$transition-normal;
+
+    &:hover {
+      background-color: v.$cart-item-color-hover;
+    }
+    &:active {
+      background-color: v.$cart-item-color-active;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+  }
+  &__item {
+    display: flex;
+    background-color: v.$cart-item-color;
+    border-radius: v.$radius-sm;
+    border: v.$border-cart-basic;
+    padding: 10px 15px;
+    margin-top: 15px;
+
+    &-title {
+      font-size: 15px;
+      font-weight: v.$fw-bold;
+    }
+    &-category {
+      font-size: 12px;
+      color: v.$category-color;
+    }
+    &-price {
+      font-size: 16px;
+      font-weight: v.$fw-bold;
+    }
+    &-img {
+      width: 100px;
+      height: 100px;
+    }
+    &-close-btn {
+      @include m.circle-button(22px);
+      transition: background-color v.$transition-normal;
+
+      &:hover {
+        background-color: v.$cart-close-btn-color-hover;
+
+        .icon__cross-secondary {
+          color: v.$icon-cross-secondary-hover;
+        }
+      }
+      &:active {
+        background-color: v.$bg-primary;
+
+        .icon__cross-secondary {
+          color: v.$icon-cross-secondary-active;
+        }
+      }
+    }
+  }
+  &__item-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    &-top {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-bottom {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    &-star {
+      width: 11px;
+      height: 11px;
+    }
+    &-total {
+      font-size: 11px;
+      color: v.$text-color-rating;
+      margin-left: 5px;
+    }
+  }
+  &__footer {
+    margin-top: auto;
+    padding-top: 40px;
+    padding-bottom: 22px;
+    justify-content: flex-end;
+    background-color: v.$cart-color-accent;
+    border-top: v.$border-cart-basic;
+  }
+  &__info {
+
+    &-wrap {
+      margin-bottom: 13px;
+    }
+    &-item {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-label {
+      font-size: 13px;
+      color: v.$cart-item-label-color;
+    }
+    &-value {
+      font-size: 13px;
+      font-weight: v.$fw-bold;
+
+      &--free {
+        color: v.$cart-item-value-free-color;
+      }
+    }
+  }
+  &__totals {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+
+    &-label {
+      font-size: 16px;
+      font-weight: v.$fw-bold;
+    }
+    &-value {
+      font-size: 18px;
+      color: v.$cart-item-value-free-color;
+      font-weight: v.$fw-bold;
+    }
+  }
+  &__order {
+
+    &-btn {
+      width: 100%;
+      height: 50px;
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: v.$fw-bold;
+      background-color: v.$cart-quantity-btn-color;
+      border-radius: v.$radius-sm;
+      transition: v.$transition-normal;
+
+      &:hover {
+        background-color: v.$cart-quantity-btn-color-hover;
+      }
+      &:active {
+        background-color: v.$cart-quantity-btn-color-active;
+      }
+    }
+  }
+
+  @media(max-width: 480px) {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.quantity {
+  @include m.flex-center;
+  padding: 0 5px;
+  border: v.$border-cart-basic;
+  background-color: v.$cart-color-accent;
+  border-radius: v.$radius-sm;
+  transition: v.$transition-normal;
+
+  &:hover  {
+    background-color: v.$cart-color-accent-hover;
+    border: v.$border-cart-basic;
+
+    .quantity__field {
+      background-color: v.$cart-color-accent-hover;
+      transition: v.$transition-normal;
+    }
+  }
+
+  &__btn {
+    width: 18px;
+    height: 18px;
+
+    text-align: center;
+    font-size: 13px;
+    font-weight: v.$fw-bold;
+    color: v.$cart-item-label-color;
+
+
+    &--minus {
+      @include m.flex-center;
+      border-radius: v.$radius-sm;
+      transition: v.$transition-normal;
+
+      &:hover {
+        background-color: rgba(#D9D9D9, .4);
+        color: #fff;
+      }
+      &:active {
+        background-color: #D9D9D9;
+        color: v.$cart-color-accent;
+      }
+    }
+    &--plus {
+      @include m.flex-center;
+      border-radius: v.$radius-sm;
+      transition: v.$transition-normal;
+
+      &:hover {
+        background-color: rgba(#D9D9D9, .4);
+        color: #fff;
+      }
+      &:active {
+        background-color: #D9D9D9;
+        color: v.$cart-color-accent;
+      }
+    }
+  }
+  &__field {
+    width: 25px;
+    height: 28px;
+    text-align: center;
+    background-color: v.$cart-color-accent;
+    transition: v.$transition-normal;
+    border: none;
+    cursor: auto;
+
+    &:focus {
+      outline: none;
+      background-color: transparent;
+    }
+  }
+}
