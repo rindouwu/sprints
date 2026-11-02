@@ -17,6 +17,8 @@ const closeSearch = () => {
     input.classList.remove('wide')
     wrapper.classList.remove('is-active')
     overlay.classList.remove('is-visible')
+    list.innerHTML = ''
+    input.value = ''
     currentItems = []
 }
 
@@ -28,8 +30,8 @@ const renderEmpty = () => {
     list.innerHTML = `<a href="#">Ничего не найдено</a>`
 }
 const renderItems = (items) => {
-    list.innerHTML = items.map(item => `
-        <a href="#">${item.label}</a>
+    list.innerHTML = items.map((item, i) => `
+        <a href="#" data-index="${i}">${item.label}</a>
     `).join('')
 }
 const findMatches = (query) => {
@@ -51,6 +53,19 @@ const findMatches = (query) => {
 
     return found
 }
+const selectItem = (item) => {
+    input.value = ''
+    closeSearch()
+
+    const productsSection = document.getElementById('products')
+    if(!productsSection) return
+
+    productsSection.scrollIntoView({ behavior: 'smooth' })
+
+    const catBtn = productsSection.querySelector(`[data-cat="${item.category}"]`)
+    if(catBtn) catBtn.click()
+    input.blur()
+}
 const updateSuggestions = (query) => {
     clearList()
     if(!query.trim()) return
@@ -69,6 +84,14 @@ export function initSearch() {
     })
     input.addEventListener('input', e => {
         updateSuggestions(e.currentTarget.value)
+    })
+    list.addEventListener('click', e => {
+        const link = e.target.closest('a[data-index]')
+        if(!link) return
+
+        e.preventDefault()
+        const item = currentItems[Number(link.dataset.index)]
+        if(item) selectItem(item)
     })
     document.addEventListener('click', e => {
         if(!e.target.closest('.hero__search-wrap')) closeSearch()
