@@ -2,6 +2,8 @@
 @use '../abstracts/mixins' as m;
 
 .hero {
+  position: relative;
+  isolation: isolate;
   padding-top: 80px;
   height: 1080px;
 
@@ -24,6 +26,10 @@
   &__search {
     position: relative;
 
+    &-wrap {
+      position: relative;
+      z-index: 30;
+    }
     &-input {
       width: 350px;
       height: 50px;
@@ -32,6 +38,7 @@
       border-radius: v.$radius-lg;
       background-color: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(8px);
+      transition: width .3s ease;
 
       &::placeholder {
         font-size: 18px;
@@ -42,6 +49,9 @@
       &:focus {
         outline: none;
         border-color: v.$text-color-accent;
+      }
+      &.wide {
+        width: 825px;
       }
     }
     &-btn {
@@ -82,5 +92,55 @@
       max-width: 350px;
       &::placeholder { font-size: 16px; }
     }
+  }
+}
+
+.search-suggestions-wrapper {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows .3s ease, opacity .3s ease, visibility .3s ease;
+
+  background: #fff;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+
+  &.is-active {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.search-suggestions {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 8px 0;
+
+  a {
+    color: v.$text-color-secondary;
+    padding: 10px 16px;
+  }
+}
+
+.search-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+
+  &.is-visible {
+    visibility: visible;
+    opacity: 1;
   }
 }
