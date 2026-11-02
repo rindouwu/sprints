@@ -100,11 +100,17 @@
             <div class="container hero__inner">
                 <h1 class="hero__title">Make Your Interior More Minimalistic & Modern</h1>
                 <p class="hero__desc">Turn your room with panto into a lot more minimalist and modern with ease and speed</p>
-                <div class="hero__search">
-                    <input class="hero__search-input" type="search" placeholder="Search furniture" aria-label="Search furniture">
-                    <button class="hero__search-btn"><img src="assets/icons/other/search.svg" alt="search"></button>
+                <div class="hero__search-wrap">
+                    <div class="hero__search">
+                        <input class="hero__search-input" type="search" placeholder="Search furniture" aria-label="Search furniture" data-search-input>
+                        <button class="hero__search-btn"><img src="assets/icons/other/search.svg" alt="search"></button>
+                    </div>
+                    <div class="search-suggestions-wrapper" data-suggestions-wrapper>
+                        <nav class="search-suggestions" aria-label="Suggestions" data-suggestions-list></nav>
+                    </div>
                 </div>
             </div>
+            <div class="search-overlay" data-search-overlay></div>
         </section>
     </div>
     <main class="main">

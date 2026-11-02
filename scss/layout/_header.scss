@@ -20,6 +20,16 @@
   }
   &__link {
     font-size: 18px;
+    transition: opacity .3s ease, text-decoration .3s ease;
+
+    &:hover {
+      opacity: .8;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+    &:active {
+      opacity: 1;
+    }
   }
   &__cart {
     position: relative;

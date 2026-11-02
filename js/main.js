@@ -3,10 +3,12 @@ import { initProducts } from "./modules/products";
 import { renderReviews } from './modules/reviews'
 import { initCart } from './modules/cart/cart'
 import { initCartPanel } from './modules/cart/cart-panel'
+import { initSearch } from './modules/search'
 
 initProducts()
 renderReviews()
 initCartPanel()
+initSearch()
 
 initSlider({
     sliderSelector: '.reviews__slider',
