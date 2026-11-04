@@ -127,6 +127,15 @@
   a {
     color: v.$text-color-secondary;
     padding: 10px 16px;
+    transition: background .2s ease;
+
+    &:hover,
+    &.is-highlighted {
+      background: #A3A3A3;
+    }
+    &:active {
+      background: #C0BDBD;
+    }
   }
 }
 

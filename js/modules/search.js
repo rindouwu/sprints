@@ -7,6 +7,7 @@ const overlay = document.querySelector('[data-search-overlay]')
 
 const categories = ['Sofa', 'Chair', 'Beds', 'Lamp']
 let currentItems = []
+let activeIndex = -1
 
 const openSearch = () => {
     input.classList.add('wide')
@@ -20,8 +21,18 @@ const closeSearch = () => {
     list.innerHTML = ''
     input.value = ''
     currentItems = []
+    activeIndex = -1
 }
+const highlightItem = (index) => {
+    const links = list.querySelectorAll('a[data-index]')
+    links.forEach((link, i) => {
+        link.classList.toggle('is-highlighted', i === index)
+    })
 
+    if(index > -1 && links[index]) {
+        links[index].scrollIntoView({ block: 'nearest'})
+    }
+}
 const clearList = () => {
     list.innerHTML = ''
     currentItems = []
@@ -33,6 +44,7 @@ const renderItems = (items) => {
     list.innerHTML = items.map((item, i) => `
         <a href="#" data-index="${i}">${item.label}</a>
     `).join('')
+    activeIndex = -1
 }
 const findMatches = (query) => {
     const q = query.toLowerCase().trim()
@@ -78,8 +90,29 @@ export function initSearch() {
         openSearch()
     })
     input.addEventListener('keydown', e => {
+        const links = list.querySelectorAll('a[data-index]')
+
         if (e.key === 'Escape') {
             closeSearch()
+            input.blur()
+        }
+
+        if(!links) return
+        if(e.key === 'ArrowDown') {
+            e.preventDefault()
+            activeIndex = (activeIndex + 1) % links.length
+            highlightItem(activeIndex)
+        }
+        if(e.key === 'ArrowUp') {
+            e.preventDefault()
+            activeIndex = (activeIndex - 1 + links.length) % links.length
+            highlightItem(activeIndex)
+        }
+        if(e.key === 'Enter') {
+            if(activeIndex > 1 && currentItems[activeIndex]) {
+                e.preventDefault()
+                selectItem(currentItems[activeIndex])
+            }
         }
     })
     input.addEventListener('input', e => {
