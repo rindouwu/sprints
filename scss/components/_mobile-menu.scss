@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  text-align: end;
+  padding-top: 20px;
+  padding-right: 20px;
+  background: v.$cart-color-primary;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__close {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    gap: 65px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  &__link {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+}

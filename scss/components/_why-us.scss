@@ -1,0 +1,76 @@
+@use '../abstracts/variables' as v;
+
+.why-us {
+  color: v.$text-color-secondary;
+  padding-top: 120px;
+
+  &__inner {
+    display: flex;
+    gap: 90px;
+  }
+  &__title {
+    font-size: 42px;
+    font-weight: v.$fw-bold;
+    min-width: 250px;
+  }
+  &__advantages {
+    display: flex;
+    gap: 50px;
+  }
+  &__advantage {
+    padding-bottom: 100px;
+
+    &--title {
+      font-size: 24px;
+      font-weight: v.$fw-bold;
+    }
+    &--desc {
+      padding-top: 20px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+  }
+  &__more-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 25px;
+    cursor: pointer;
+    transition: v.$transition-normal;
+
+    &:hover {
+      opacity: .6;
+      .why-us__more-info--arrow {
+        transform: translateX(5px);
+      }
+    }
+    &:active {
+      .why-us__more-info--text {
+        color: v.$text-view-more-active;
+      }
+      .why-us__more-info--arrow {
+        color: v.$text-view-more-active;
+      }
+    }
+
+    &--text {
+      color: v.$text-color-accent;
+      font-weight: v.$fw-medium;
+    }
+    &--arrow {
+      color: v.$text-color-accent;
+      transition: v.$transition-normal;
+    }
+  }
+
+  @media(max-width: 1024px) {
+    &__inner { flex-direction: column; gap: 40px; }
+    &__title { min-width: 0; }
+  }
+  @media(max-width: 768px) {
+    padding-top: 60px;
+    &__advantages { flex-direction: column; gap: 0; }
+    &__advantage { padding-bottom: 40px; }
+    &__title { font-size: 28px; }
+  }
+}

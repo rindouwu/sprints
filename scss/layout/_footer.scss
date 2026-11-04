@@ -1,0 +1,137 @@
+@use '../abstracts/variables' as v;
+
+.footer {
+  color: v.$text-color-secondary;
+  background-color: v.$bg-secondary;
+  padding-top: 120px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 130px;
+    padding: 0 80px;
+  }
+  &__brand {
+    max-width: 300px;
+  }
+  &__logo {
+    font-size: 28px;
+    font-weight: v.$fw-bold;
+    letter-spacing: 1px;
+  }
+  &__about {
+    font-size: 15px;
+    font-weight: v.$fw-medium;
+    line-height: 160%;
+    padding-top: 30px;
+    opacity: .8;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__nav-wrap {
+    display: flex;
+    gap: 120px;
+  }
+  &__title {
+    font-size: 17px;
+    color: v.$text-footer-title;
+    margin-bottom: 20px;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  &__nav-socials img {
+    width: 20px;
+    height: 20px;
+  }
+  &__item-social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    &.footer__item:hover,
+    &:hover {
+      opacity: 1;
+      color: #233549;
+      .footer__icon {
+        color: #233549;
+      }
+    }
+  }
+  &__icon {
+    color: #1E2833;
+    transition: color v.$transition-normal;
+  }
+  &__item {
+    opacity: .8;
+    font-weight: v.$fw-medium;
+    transition: opacity v.$transition-normal;
+
+    &:hover {
+      opacity: .6;
+    }
+    &:active {
+      opacity: .8;
+    }
+  }
+  &__bottom {
+    padding-bottom: 60px;
+  }
+  &__credits {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__copyright {
+    font-size: 15px;
+    opacity: .5;
+  }
+  &__legal {
+    display: flex;
+    gap: 30px;
+    font-size: 15px;
+    font-weight: v.$fw-medium;
+    line-height: 160%;
+    opacity: .8;
+  }
+  &__terms {
+    transition: opacity v.$transition-normal;
+
+    &:hover {
+      opacity: .8;
+    }
+    &:active {
+      opacity: 1;
+    }
+  }
+  &__privacy {
+    transition: opacity v.$transition-normal;
+
+    &:hover {
+      opacity: .8;
+    }
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  @media(max-width: 1024px) {
+    padding-top: 80px;
+    &__inner { padding: 0 40px; gap: 60px; }
+    &__nav-wrap { gap: 60px; }
+  }
+  @media(max-width: 768px) {
+    padding-top: 60px;
+    &__top { flex-direction: column; gap: 40px; }
+    &__nav-wrap { flex-wrap: wrap; gap: 40px; }
+    &__credits { flex-direction: column; gap: 15px; }
+  }
+  @media(max-width: 576px) {
+    padding-top: 40px;
+    &__inner { padding: 0 16px; }
+    &__legal { flex-direction: column; gap: 10px; }
+  }
+}

@@ -1,0 +1,11 @@
+@use '../abstracts/variables' as v;
+
+.container {
+  width: 100%;
+  max-width: v.$container-width;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @media(max-width: 1300px) { padding: 0 24px; }
+  @media(max-width: 768px) { padding: 0 16px; }
+}
