@@ -40,7 +40,7 @@
   #{$side}: $offset;
 }
 
-@mixin mobile-slider-button($offset: -10px, $size: 40px) {
+@mixin mobile-slider-button($offset: -10px, $size: 50px) {
   width: $size;
   height: $size;
 

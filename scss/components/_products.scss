@@ -244,8 +244,23 @@
     &__card {
       flex: 0 0 calc((100% - 30px) / 2);
     }
+    &__slider {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding-bottom: 20px;
+    }
+    &__view-all {
+      justify-content: flex-end;
+    }
     &__slider-btn {
+      position: static;
       @include m.mobile-slider-button;
+    }
+    &__controls {
+      display: flex;
+      gap: 15px;
+      margin: 0 auto;
     }
   }
 

@@ -71,9 +71,20 @@
     padding-top: 60px;
     &__title { font-size: 28px; padding-bottom: 40px; }
     &__action-text { font-size: 14px; }
-    &__slider { margin-bottom: 80px; }
+    &__slider {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
     &__slider-btn {
+      position: static;
       @include m.mobile-slider-button;
+    }
+    &__controls {
+      display: flex;
+      gap: 15px;
+      margin: 0 auto;
     }
   }
 }
