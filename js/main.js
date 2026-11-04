@@ -4,11 +4,13 @@ import { renderReviews } from './modules/reviews'
 import { initCart } from './modules/cart/cart'
 import { initCartPanel } from './modules/cart/cart-panel'
 import { initSearch } from './modules/search'
+import { initMobileMenu } from './modules/mobile-menu'
 
 initProducts()
 renderReviews()
 initCartPanel()
 initSearch()
+initMobileMenu()
 
 initSlider({
     sliderSelector: '.reviews__slider',

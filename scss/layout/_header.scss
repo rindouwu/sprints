@@ -10,6 +10,32 @@
     height: 100%;
     align-items: center;
   }
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.8);
+    }
+    @media(max-width: 768px) {
+      display: block;
+    }
+  }
+  &__menu-wrap {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
   &__logo {
     font-size: 28px;
     font-weight: v.$fw-bold;

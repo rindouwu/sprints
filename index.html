@@ -84,15 +84,25 @@
                     <a class="header__link" href="#products">Best products</a>
                     <a class="header__link" href="#reviews">Reviews</a>
                 </nav>
-                <button
-                    class="header__cart"
-                    type="button"
-                    aria-label="Open cart"
-                    data-cart-open
-                >
-                    <img class="header__cart-icon" src="assets/icons/other/bag.svg" alt="">
-                    <span class="header__cart-counter" data-cart-count>0</span>
-                </button>
+                <div class="header__menu-wrap">
+                    <button
+                            class="header__cart"
+                            type="button"
+                            aria-label="Open cart"
+                            data-cart-open
+                    >
+                        <img class="header__cart-icon" src="assets/icons/other/bag.svg" alt="">
+                        <span class="header__cart-counter" data-cart-count>0</span>
+                    </button>
+                    <button
+                            class="header__burger"
+                            type="button"
+                            aria-label="Открыть меню"
+                            data-menu-open
+                    >
+                        <img src="assets/icons/mobile/burger.svg" alt="">
+                    </button>
+                </div>
             </div>
         </header>
 
@@ -333,5 +343,16 @@
             </div>
         </footer>
     </aside>
+
+    <div class="mobile-menu" data-mobile-menu>
+        <button class="mobile-menu__close" type="button" data-menu-close>
+            <img src="assets/icons/mobile/close-burger.svg" alt="">
+        </button>
+        <nav class="mobile-menu__nav">
+            <a class="mobile-menu__link" href="#about">About Us</a>
+            <a class="mobile-menu__link" href="#products">Best products</a>
+            <a class="mobile-menu__link" href="#reviews">Reviews</a>
+        </nav>
+    </div>
 </body>
 </html>
