@@ -13,6 +13,8 @@ const openSearch = () => {
     input.classList.add('wide')
     wrapper.classList.add('is-active')
     overlay.classList.add('is-visible')
+
+    animateHeight(true)
 }
 const closeSearch = () => {
     input.classList.remove('wide')
@@ -22,7 +24,16 @@ const closeSearch = () => {
     input.value = ''
     currentItems = []
     activeIndex = -1
+
+    wrapper.style.height = '0px'
 }
+const animateHeight = (open) => {
+    const inner = list
+    const targetHeight = open ? inner.scrollHeight : 0
+
+    wrapper.style.height = `${targetHeight}px`
+}
+
 const highlightItem = (index) => {
     const links = list.querySelectorAll('a[data-index]')
     links.forEach((link, i) => {
@@ -80,10 +91,17 @@ const selectItem = (item) => {
 }
 const updateSuggestions = (query) => {
     clearList()
-    if(!query.trim()) return
+    if(!query.trim()) {
+        wrapper.style.height = '0px'
+        return
+    }
 
     currentItems = findMatches(query)
     currentItems.length ? renderItems(currentItems) : renderEmpty()
+
+    requestAnimationFrame(() => {
+        wrapper.style.height = `${list.scrollHeight}px`
+    })
 }
 export function initSearch() {
     input.addEventListener('focus', () => {
