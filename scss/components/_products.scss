@@ -1,5 +1,6 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
+@use '../abstracts/animations';
 
 .products {
   color: v.$text-color-secondary;
@@ -42,6 +43,41 @@
     flex-direction: column;
     padding-top: 70px;
     transition: transform .4s ease, box-shadow .4s ease;
+    &-add-btn {
+      @include m.circle-button(50px);
+
+      position: relative;
+      background-color: v.$product-name;
+      transition: v.$transition-normal;
+
+      &:hover {
+        background-color: v.$product-add-btn-hover;
+      }
+      &:active {
+        background-color: v.$product-add-btn-active;
+      }
+
+      &[data-state="default"] .products__card-add-icon--plus {
+        opacity: 1;
+        transform: scale(1);
+      }
+      &[data-state="loading"] {
+        cursor: wait;
+      }
+      &[data-state="loading"] .products__card-add-icon--spinner {
+        opacity: 1;
+        transform: scale(1);
+        animation: spin 1s linear infinite;
+      }
+      &[data-state="added"] .products__card-add-icon--ready {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    &-add-icon {
+      position: absolute;
+      opacity: 0;
+    }
 
     &:hover {
       transform: translateY(-55px);
@@ -110,19 +146,6 @@
       font-size: 21px;
       font-weight: v.$fw-semibold;
       color: v.$product-name;
-    }
-    &-add-btn {
-      @include m.circle-button(50px);
-
-      background-color: v.$product-name;
-      transition: v.$transition-normal;
-
-      &:hover {
-        background-color: v.$product-add-btn-hover;
-      }
-      &:active {
-        background-color: v.$product-add-btn-active;
-      }
     }
   }
   &__slider {

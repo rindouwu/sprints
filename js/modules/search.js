@@ -115,7 +115,7 @@ export function initSearch() {
             input.blur()
         }
 
-        if(!links) return
+        if(!links.length) return
         if(e.key === 'ArrowDown') {
             e.preventDefault()
             activeIndex = (activeIndex + 1) % links.length
@@ -127,7 +127,7 @@ export function initSearch() {
             highlightItem(activeIndex)
         }
         if(e.key === 'Enter') {
-            if(activeIndex > 1 && currentItems[activeIndex]) {
+            if(activeIndex > -1 && currentItems[activeIndex]) {
                 e.preventDefault()
                 selectItem(currentItems[activeIndex])
             }

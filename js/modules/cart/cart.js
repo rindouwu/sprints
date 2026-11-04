@@ -25,9 +25,9 @@ export function initCart() {
     updateCartCount(cartItems)
     countCartTotal(cartItems)
 
-    productGrid.addEventListener('click', (e) => {
+    productGrid.addEventListener('click', async (e) => {
         const button = e.target.closest('.products__card-add-btn')
-        if(!button) return
+        if(!button || button.dataset.state !== "default") return
 
         const card = button.closest('.products__card')
         if(!card) return
@@ -35,6 +35,9 @@ export function initCart() {
         const productId = card.dataset.id
         const product = products.find((product) => product.id === productId)
         if(!product) return
+
+        button.dataset.state = "loading"
+        await new Promise(resolve => setTimeout(resolve, 2000))
 
         const existingProduct = cartItems.find((item) => product.id === item.id)
         if(existingProduct) {
@@ -45,8 +48,12 @@ export function initCart() {
                 quantity: 1,
             })
         }
-
         updateCart()
+
+        button.dataset.state = "added"
+        setTimeout(() => {
+            button.dataset.state = "default"
+        }, 1000)
     })
     cartBody.addEventListener('click', (e) => {
         const button = e.target.closest('.quantity__btn, .cart__item-close-btn')

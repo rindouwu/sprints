@@ -26,7 +26,7 @@ export function initProducts() {
                         ${Array.from({length: 5}, (_, index) => `
                             <img 
                                 class="products__card-star" 
-                                src="assets/icons/stars/${index < product.rating ? 'star.svg' : 'star-empty.svg'}" 
+                                src="assets/icons/stars/${index < product.rating ? 'star.svg' : 'star-empty.svg'}"
                                 alt=""
                             >
                         `).join('')}
@@ -40,8 +40,12 @@ export function initProducts() {
                             class="products__card-add-btn"
                             type="button"
                             aria-label="Добавить ${product.title} в корзину"
+                            data-add-btn
+                            data-state="default"
                         >
-                            <img class="products__card-add-icon" src="assets/icons/button/plus.svg" alt="add-to-cart">
+                            <img class="products__card-add-icon products__card-add-icon--plus" src="assets/icons/button/plus.svg" alt="">
+                            <img class="products__card-add-icon products__card-add-icon--spinner" src="assets/icons/button/spinner.svg" alt="">
+                            <img class="products__card-add-icon products__card-add-icon--ready" src="assets/icons/button/ready.svg" alt="">
                         </button>
                     </div>
                 </div>
