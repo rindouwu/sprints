@@ -11,7 +11,7 @@ export function initProducts() {
         })
 
         productsGrid.innerHTML = filteredProducts.map(product => `
-            <article class="products__card" data-id="${product.id}" data-category="${product.category}" data-animate>
+            <article class="products__card is-visible" data-id="${product.id}" data-category="${product.category}" data-animate>
                 <div class="products__card-top">
                     <img
                         class="products__card-image"
@@ -53,6 +53,15 @@ export function initProducts() {
         `).join('')
     }
 
+    const updateFilterBg = () => {
+        const activeBtn = filters.querySelector('.product-filters__btn--active')
+        if (!activeBtn) return
+
+        const x = activeBtn.offsetLeft
+        const width = activeBtn.offsetWidth
+        filters.style.setProperty('--active-x', `${x}px`)
+        filters.style.setProperty('--active-width', `${width}px`)
+    }
     filters.addEventListener('click', (event) => {
         const button = event.target.closest('[data-cat]')
         if(!button) return
@@ -67,8 +76,12 @@ export function initProducts() {
             )
             filter.setAttribute('aria-pressed', String(isActive))
         })
+        updateFilterBg()
         renderProducts(category)
     })
 
     renderProducts()
+    updateFilterBg()
+
+    window.addEventListener('resize', updateFilterBg)
 }

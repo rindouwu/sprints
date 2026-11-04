@@ -35,6 +35,20 @@
     height: 60px;
     margin: 0 auto;
     border-radius: v.$radius-lg;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: var(--active-width, 88px);
+      height: 40px;
+      background-color: v.$bg-primary;
+      border-radius: v.$radius-lg;
+      transform: translateX(var(--active-x, 0px));
+      transition: transform .3s ease, width .3s ease;
+      z-index: 1;
+    }
   }
   &__card {
     flex: 0 0 calc((100% - 90px) / 4);
@@ -247,11 +261,12 @@
 }
 .product-filters__btn {
   width: 88px;
-  height: 45px;
+  height: 40px;
   border-radius: v.$radius-lg;
+  z-index: 2;
 
   &--active {
-    background-color: v.$bg-primary;
+    background-color: transparent;
     border-radius: v.$radius-lg;
   }
 }
