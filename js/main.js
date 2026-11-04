@@ -5,12 +5,14 @@ import { initCart } from './modules/cart/cart'
 import { initCartPanel } from './modules/cart/cart-panel'
 import { initSearch } from './modules/search'
 import { initMobileMenu } from './modules/mobile-menu'
+import { initAnimations } from "./modules/animations";
 
 initProducts()
 renderReviews()
 initCartPanel()
 initSearch()
 initMobileMenu()
+initAnimations()
 
 initSlider({
     sliderSelector: '.reviews__slider',

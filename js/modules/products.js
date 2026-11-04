@@ -11,7 +11,7 @@ export function initProducts() {
         })
 
         productsGrid.innerHTML = filteredProducts.map(product => `
-            <article class="products__card" data-id="${product.id}" data-category="${product.category}">
+            <article class="products__card" data-id="${product.id}" data-category="${product.category}" data-animate>
                 <div class="products__card-top">
                     <img
                         class="products__card-image"
