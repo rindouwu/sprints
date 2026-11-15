@@ -30,7 +30,6 @@ const loadBooks = async () => {
   } finally {
     loading.value = false
   }
-  console.log(allBooks)
 }
 
 onMounted(loadBooks)
@@ -61,7 +60,7 @@ onMounted(loadBooks)
       >
         Загрузить...
       </button>
-      <p v-if="!hasMore && allBooks.length > 0" class="text-sm">Больше книг нет</p>
+      <p v-if="!hasMore && allBooks.length > 0" class="text-sm mt-4">Больше книг нет</p>
     </div>
   </section>
 </template>

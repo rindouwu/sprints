@@ -6,6 +6,7 @@ export interface Comment {
     parent_id: number | null
     category: CommentCategory
     author: string
+    text: string
     created_at: string
     children: Comment[]
 }
