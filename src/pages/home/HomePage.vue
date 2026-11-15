@@ -1,12 +1,22 @@
 <script setup lang="ts">
 import type { Book } from "@/entities/book/model/types.ts"
 import { fetchBooks } from "@/entities/book/api/index.ts"
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 
 const allBooks = ref<Book[]>([])
 const loading = ref(false)
 const error = ref(false)
-// const displayCount = ref(8)
+const displayCount = ref(8)
+
+const visibleBooks = computed(() => {
+  return allBooks.value.slice(0, displayCount.value)
+})
+const hasMore = computed(() => {
+  return displayCount.value < allBooks.value.length
+})
+const loadMore = () => {
+  displayCount.value += 8
+}
 
 const loadBooks = async () => {
   loading.value = true
@@ -34,13 +44,24 @@ onMounted(loadBooks)
     <div class="grid gap-4">
       <article
           class="book"
-          v-for="book in allBooks"
+          v-for="book in visibleBooks"
           :key="book.id"
       >
         <h2 class="text-2xl font-semibold">{{ book.title }}</h2>
         <p>{{ book.author }}</p>
         <p>{{ book.description }}</p>
+
+        <router-link :to="`/books/${book.id}`">Читать</router-link>
       </article>
+    </div>
+    <div>
+      <button
+        v-if="hasMore"
+        @click="loadMore"
+      >
+        Загрузить...
+      </button>
+      <p v-if="!hasMore && allBooks.length > 0" class="text-sm">Больше книг нет</p>
     </div>
   </section>
 </template>
