@@ -6,6 +6,7 @@ import type { Comment } from "@/entities/comment/model/types";
 import { useRoute } from "vue-router";
 import { fetchBookById } from "@/entities/book/api";
 import { fetchBookComments } from "@/entities/comment/api";
+import CommentNode from "@/entities/comment/ui/CommentNode.vue";
 
 const route = useRoute();
 const book = ref<Book | null>(null);
@@ -61,10 +62,11 @@ onMounted(loadData)
         Нет комментариев
       </div>
       <div v-else class="space-y-8">
-        <div v-for="comment in comments" :key="comment.id" class="p-3 rounded">
-          {{ comment.author }}
-          {{ comment.text }}
-        </div>
+        <CommentNode
+            v-for="comment in comments"
+            :key="comment.id"
+            :comment="comment"
+        />
       </div>
     </section>
   </div>
