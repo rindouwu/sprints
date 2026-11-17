@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { Book } from "@/entities/book/model/types.ts"
 import { fetchBooks } from "@/entities/book/api/index.ts"
+import BookCard from "@/entities/book/ui/BookCard.vue"
+
 import {computed, onMounted, ref} from "vue";
 
 const allBooks = ref<Book[]>([])
@@ -41,17 +43,12 @@ onMounted(loadBooks)
     <div v-if="loading" class="text-gray-400">Загрузка</div>
     <div v-if="error" class="text-red-400">Ошибка</div>
     <div class="grid gap-4">
-      <article
-          class="book"
+      <BookCard
           v-for="book in visibleBooks"
           :key="book.id"
+          :book="book"
       >
-        <h2 class="text-2xl font-semibold">{{ book.title }}</h2>
-        <p>{{ book.author }}</p>
-        <p>{{ book.description }}</p>
-
-        <router-link :to="`/books/${book.id}`">Читать</router-link>
-      </article>
+      </BookCard>
     </div>
     <div>
       <button
