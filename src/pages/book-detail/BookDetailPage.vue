@@ -2,17 +2,17 @@
 
 import { onMounted, ref } from "vue";
 import type { Book } from "@/entities/book/model/types";
-import type { Comment } from "@/entities/comment/model/types";
 import { useRoute } from "vue-router";
 import { fetchBookById } from "@/entities/book/api";
-import { fetchBookComments } from "@/entities/comment/api";
 import CommentNode from "@/entities/comment/ui/CommentNode.vue";
+import { useCommentsStore } from "@/entities/comment/model/store";
 
 const route = useRoute();
 const book = ref<Book | null>(null);
-const comments = ref<Comment[]>();
 const loading = ref(true);
 const error = ref(false);
+
+const commentsStore = useCommentsStore()
 
 const loadData = async () => {
   loading.value = true;
@@ -20,13 +20,8 @@ const loadData = async () => {
 
   try {
     const id = route.params.id as string
-    const [bookData, commentData] = await Promise.all([
-        fetchBookById(id),
-        fetchBookComments(id)
-    ])
-
-    book.value = bookData
-    comments.value = commentData
+    book.value = await fetchBookById(id);
+    await commentsStore.loadComments(id)
   } catch (e) {
     console.log(e)
     error.value = true;
@@ -41,7 +36,7 @@ onMounted(loadData)
 <template>
 <section>
   <div v-if="loading">Загрузка...</div>
-  <div v-else-if="error" class="text-red-400 text-sm">Ошибка</div>
+  <div v-else-if="error" class="text-red-400 text-sm">Не удалось загрузить книгу</div>
   <div v-else-if="book">
     <header class="mb-8">
       <h1 class="text-3xl">{{ book.title }}</h1>
@@ -58,12 +53,15 @@ onMounted(loadData)
 
     <section>
       <h2 class="text-2xl">Обсуждения</h2>
-      <div v-if="!comments">
+
+      <div v-if="commentsStore.loading">Загрузка комментариев...</div>
+      <div v-else-if="commentsStore.error">Ошибка загрузки комментариев</div>
+      <div v-else-if="commentsStore.comments.length === 0">
         Нет комментариев
       </div>
       <div v-else class="space-y-8">
         <CommentNode
-            v-for="comment in comments"
+            v-for="comment in commentsStore.comments"
             :key="comment.id"
             :comment="comment"
         />
