@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { onMounted, ref } from "vue";
+import {computed, onMounted, ref} from "vue";
 import type { Book } from "@/entities/book/model/types";
 import { useRoute } from "vue-router";
 import { fetchBookById } from "@/entities/book/api";
@@ -13,6 +13,19 @@ const loading = ref(true);
 const error = ref(false);
 
 const commentsStore = useCommentsStore()
+
+const groupedComments = computed(() => {
+  const cats = [
+    { key: 'alternative', label: 'Альтернативы' },
+    { key: 'edit', label: 'Правки' },
+    { key: 'lore', label: 'Лор' },
+    { key: 'question', label: 'Вопросы' },
+  ]
+  return cats.map(cat => ({
+    ...cat,
+    items: commentsStore.comments.filter(c => c.category === cat.key)
+  })).filter(group => group.items.length > 0)
+})
 
 const loadData = async () => {
   loading.value = true;
@@ -60,11 +73,14 @@ onMounted(loadData)
         Нет комментариев
       </div>
       <div v-else class="space-y-8">
-        <CommentNode
-            v-for="comment in commentsStore.comments"
-            :key="comment.id"
-            :comment="comment"
-        />
+        <div v-for="group in groupedComments" :key="group.key">
+          <h3 class="text-lg font-semibold">{{ group.label}}</h3>
+          <CommentNode
+              v-for="comment in group.items"
+              :key="comment.id"
+              :comment="comment"
+          />
+        </div>
       </div>
     </section>
   </div>
