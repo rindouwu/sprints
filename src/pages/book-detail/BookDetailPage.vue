@@ -6,6 +6,7 @@ import { useRoute } from "vue-router";
 import { fetchBookById } from "@/entities/book/api";
 import CommentNode from "@/entities/comment/ui/CommentNode.vue";
 import { useCommentsStore } from "@/entities/comment/model/store";
+import SkeletonBook from "./SkeletonBook.vue";
 
 const route = useRoute();
 const book = ref<Book | null>(null);
@@ -49,14 +50,7 @@ onMounted(loadData)
 <template>
 <section>
   <div v-if="loading" class="mx-auto max-w-3xl animate-pulse">
-    <div class="mb-5 h-3 w-32 bg-zinc-800"></div>
-    <div class="mb-4 h-12 w-3/4 bg-zinc-800"></div>
-    <div class="mb-10 h-4 w-40 bg-zinc-800"></div>
-    <div class="space-y-3">
-      <div class="h-4 w-full bg-zinc-900"></div>
-      <div class="h-4 w-full bg-zinc-900"></div>
-      <div class="h-4 w-5/6 bg-zinc-900"></div>
-    </div>
+    <SkeletonBook />
   </div>
   <div
       v-else-if="error"
