@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import CatCompanion from "@/shared/ui/CatCompanion.vue";
 </script>
 
 <template>
@@ -20,4 +20,6 @@
       <router-view />
     </main>
   </div>
+
+  <CatCompanion />
 </template>
