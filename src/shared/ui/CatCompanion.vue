@@ -16,6 +16,8 @@ const stopDistance = 40
 let animationId: number
 let frameTimer: number
 
+const isAwake = ref(false)
+
 const spriteMap: Record<string, [number, number][]> = {
   N: [[1, 2], [1, 3]],
   NE: [[0, 2], [0, 3]],
@@ -40,7 +42,16 @@ const updateMouse = (e: MouseEvent) => {
   mouseY.value = e.clientY
 }
 
+const wakeUp = () => {
+  isAwake.value = true
+}
+
 const moveCat = () => {
+  if(!isAwake.value) {
+    animationId = requestAnimationFrame(moveCat)
+    return
+  }
+
   const dx = mouseX.value - (x.value + 16)
   const dy = mouseY.value - (y.value + 16)
 
@@ -67,13 +78,17 @@ const moveCat = () => {
 }
 
 const animateFrames = () => {
-  frame.value = frame.value === 0 ? 1 : 0
+  if(isAwake.value) {
+    frame.value = frame.value === 0 ? 1 : 0
+  } else {
+    frame.value = 0
+  }
   frameTimer = window.setTimeout(animateFrames, 150)
 }
 
 onMounted(() => {
-  x.value = window.innerWidth / 2 - 16
-  y.value = window.innerHeight / 2 - 16
+  x.value = window.innerWidth / 2 + 50
+  y.value = 20
   mouseX.value = window.innerWidth / 2
   mouseY.value = window.innerHeight / 2
 
@@ -90,11 +105,12 @@ onUnmounted(() => {
 
 <template>
   <div
-      class="fixed z-50 top-0 left-0 w-8 h-8 pointer-events-none cat"
+      class="fixed z-50 top-0 left-0 w-8 h-8 cat cursor-pointer"
       :style="{
           transform: `translate(${x}px, ${y}px)`,
           backgroundPosition: getBackgroundPosition()
       }"
+      @click="wakeUp"
   >
   </div>
 </template>
