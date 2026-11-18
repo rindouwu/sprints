@@ -2,6 +2,7 @@
 import BookCard from "@/entities/book/ui/BookCard.vue"
 import { useBookStore } from "@/entities/book/model/store.ts";
 import { onMounted } from "vue";
+import SkeletonHome from "./SkeletonHome.vue";
 
 const booksStore = useBookStore()
 onMounted(booksStore.loadBooks)
@@ -14,7 +15,9 @@ onMounted(booksStore.loadBooks)
       <p class="text-md font-light">Всего {{ booksStore.allBooks.length }} книг</p>
     </header>
     <h1 class="text-2xl font-bold mb-4 font-horror">Список книг</h1>
-    <div v-if="booksStore.loading" class="text-gray-400">Загрузка</div>
+    <div v-if="booksStore.loading" class="text-gray-400">
+      <SkeletonHome />
+    </div>
     <div v-if="booksStore.error" class="text-red-400">Ошибка</div>
     <div class="grid gap-4">
       <BookCard

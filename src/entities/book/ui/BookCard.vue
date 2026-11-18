@@ -6,7 +6,7 @@ defineProps<{book: Book}>()
 
 <template>
   <router-link
-      class="border cursor-pointer border-gray-200 rounded-lg p-5 hover: hover:bg-gray-500 transition-colors"
+      class="border cursor-pointer border-gray-200 rounded-lg p-5 hover:bg-gray-500 transition-colors"
       :to="`/books/${book.id}`"
   >
     <article>
