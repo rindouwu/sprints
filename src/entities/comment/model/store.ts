@@ -18,7 +18,7 @@ export const useCommentsStore = defineStore('comments', () => {
         try {
             comments.value = await fetchBookComments(bookId)
             currentBookId.value = bookId
-        } catch (e) {
+        } catch {
             error.value = true
         } finally {
             loading.value = false

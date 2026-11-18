@@ -36,8 +36,7 @@ const loadData = async () => {
     const id = route.params.id as string
     book.value = await fetchBookById(id);
     await commentsStore.loadComments(id)
-  } catch (e) {
-    console.log(e)
+  } catch {
     error.value = true;
   } finally {
     loading.value = false;

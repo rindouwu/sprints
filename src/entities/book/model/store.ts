@@ -25,8 +25,7 @@ export const useBookStore = defineStore('books', () => {
 
         try {
             allBooks.value = await fetchBooks()
-        } catch (e) {
-            console.log(e)
+        } catch {
             error.value = true
         } finally {
             loading.value = false
