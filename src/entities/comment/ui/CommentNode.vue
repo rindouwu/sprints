@@ -40,7 +40,7 @@ const getCategoryColor = (cat: string) => categoryColors[cat]
       <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200 group-hover:bg-gray-400 transition-colors"></div>
       <div class="absolute left-0 bottom-0 w-4 h-0.5 bg-gray-200 group-hover:bg-gray-400 transition-colors"></div>
     </div>
-    <article class="bg-white p-4 rounded-lg shadow-sm relative hover:shadow-md transition-shadow">
+    <article class="bg-zinc-900 p-4 rounded-lg shadow-sm relative hover:shadow-md transition-shadow">
       <div class="flex justify-between items-start mb-2">
         <div class="flex flex-wrap gap-2 items-center">
           <p>{{ comment.author }}</p>
@@ -51,9 +51,9 @@ const getCategoryColor = (cat: string) => categoryColors[cat]
             {{ getCategoryLabel(comment.category) }}
           </p>
         </div>
-        <p class="text-xs">{{ new Date(comment.created_at).toLocaleDateString("ru-RU") }}</p>
+        <p class="text-xs md:text-base">{{ new Date(comment.created_at).toLocaleDateString("ru-RU") }}</p>
       </div>
-      <p class="text-gray-700">{{ comment.text }}</p>
+      <p class="text-base md:text-lg text-zinc-200">{{ comment.text }}</p>
     </article>
 
     <div

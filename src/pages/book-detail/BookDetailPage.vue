@@ -48,16 +48,35 @@ onMounted(loadData)
 
 <template>
 <section>
-  <div v-if="loading">Загрузка...</div>
-  <div v-else-if="error" class="text-red-400 text-sm">Не удалось загрузить книгу</div>
-  <div v-else-if="book">
+  <div v-if="loading" class="mx-auto max-w-3xl animate-pulse">
+    <div class="mb-5 h-3 w-32 bg-zinc-800"></div>
+    <div class="mb-4 h-12 w-3/4 bg-zinc-800"></div>
+    <div class="mb-10 h-4 w-40 bg-zinc-800"></div>
+    <div class="space-y-3">
+      <div class="h-4 w-full bg-zinc-900"></div>
+      <div class="h-4 w-full bg-zinc-900"></div>
+      <div class="h-4 w-5/6 bg-zinc-900"></div>
+    </div>
+  </div>
+  <div
+      v-else-if="error"
+      class="border border-red-500/20 bg-red-500/5 p-6"
+  >
+    <p class="text-sm text-red-400">
+      Не удалось загрузить книгу.
+    </p>
+  </div>
+
+  <template v-else-if="book">
     <header class="mb-8">
-      <h1 class="text-3xl">{{ book.title }}</h1>
-      <p class="">Автор: {{ book.author }}</p>
-      <div class="text-sm text-gray-500">
-        Добавлена: {{ new Date(book.created_at).toLocaleDateString("ru-RU") }}
+      <h1 class="text-3xl font-semibold text-zinc-100 sm:text-5xl">{{ book.title }}</h1>
+      <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-md text-zinc-300">
+        <p class="">Автор: {{ book.author }}</p>
+        <div class="text-md text-gray-400">
+          Добавлена: {{ new Date(book.created_at).toLocaleDateString("ru-RU") }}
+        </div>
       </div>
-      <p>{{ book.description }}</p>
+      <p class="mt-8 max-w-2xl text-md text-zinc-200">{{ book.description }}</p>
     </header>
 
     <article>
@@ -65,7 +84,7 @@ onMounted(loadData)
     </article>
 
     <section>
-      <h2 class="text-2xl">Обсуждения</h2>
+      <h2 class="text-2xl mt-10 pb-3">Обсуждения</h2>
 
       <div v-if="commentsStore.loading">Загрузка комментариев...</div>
       <div v-else-if="commentsStore.error">Ошибка загрузки комментариев</div>
@@ -83,7 +102,7 @@ onMounted(loadData)
         </div>
       </div>
     </section>
-  </div>
+  </template>
 </section>
 </template>
 
