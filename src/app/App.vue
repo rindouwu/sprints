@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { FeedPage } from "../pages/feed";
+import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <FeedPage />
+  <router-view />
 </template>

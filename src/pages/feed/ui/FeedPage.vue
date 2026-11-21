@@ -2,11 +2,13 @@
 import { onMounted, ref } from "vue";
 import { getVideos, type Video } from "../../../entities/video";
 import { VideoList } from "../../../widgets/video-list";
+import { useRouter } from 'vue-router'
 
 const videos = ref<Video[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
-const selected = ref<Video | null>(null)
+
+const router = useRouter()
 
 onMounted(async () => {
   try {
@@ -17,6 +19,10 @@ onMounted(async () => {
     loading.value = false
   }
 })
+
+const openVideo = (video: Video) => {
+  router.push({ name: 'video', params: { id: video.id } })
+}
 </script>
 
 <template>
@@ -26,12 +32,8 @@ onMounted(async () => {
     <VideoList
         v-else
         :videos="videos"
-        @select="selected = $event"
+        @select="openVideo"
     />
-
-    <p v-if="selected">
-      Выбрано: {{ selected.title }}
-    </p>
   </div>
 </template>
 
