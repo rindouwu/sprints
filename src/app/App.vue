@@ -1,17 +1,29 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { getVideos } from "../entities/video";
+import {onMounted, ref} from "vue";
+import {getVideos, type Video} from "../entities/video";
+import {VideoList} from "../widgets/video-list";
+
+const videos = ref<Video[]>([]);
+const loading = ref(true);
+const error = ref(false);
 
 onMounted(async () => {
   try {
-    const videos = await getVideos();
+    videos.value = await getVideos();
     console.log(videos);
-  } catch(error) {
-    console.log(error);
+  } catch(e) {
+    console.log(e);
+    error.value = true;
+  } finally {
+    loading.value = false;
   }
 })
 </script>
 
 <template>
-
+  <div class="max-w-6xl mx-auto p-4">
+    <div v-if="loading">загрузка...</div>
+    <div v-else-if="error">ошибка</div>
+    <VideoList v-else :videos="videos" />
+  </div>
 </template>
