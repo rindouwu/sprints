@@ -2,13 +2,12 @@
 import { onMounted, ref } from "vue";
 import { getVideos, type Video } from "../../../entities/video";
 import { VideoList } from "../../../widgets/video-list";
-import { useRouter } from 'vue-router'
+import { VideoModal } from "../../../widgets/video-modal";
 
 const videos = ref<Video[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
-
-const router = useRouter()
+const selected = ref<Video | null>(null)
 
 onMounted(async () => {
   try {
@@ -19,10 +18,6 @@ onMounted(async () => {
     loading.value = false
   }
 })
-
-const openVideo = (video: Video) => {
-  router.push({ name: 'video', params: { id: video.id } })
-}
 </script>
 
 <template>
@@ -32,7 +27,13 @@ const openVideo = (video: Video) => {
     <VideoList
         v-else
         :videos="videos"
-        @select="openVideo"
+        @select="selected = $event"
+    />
+
+    <VideoModal
+        v-if="selected"
+        :video="selected"
+        @close="selected = null"
     />
   </div>
 </template>
