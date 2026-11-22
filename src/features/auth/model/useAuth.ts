@@ -15,7 +15,7 @@ export const useAuth = () => {
     }
     const signUp = async(email: string, password: string, name: string) => {
         try {
-            const data = await register({ email: string, password: string, name: string})
+            const data = await register({ email, password, name })
             localStorage.setItem('accessToken', data.accessToken)
             return data.user
         } finally {
