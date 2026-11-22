@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { getVideos, type Video } from "../../../entities/video";
-import { VideoList } from "../../../widgets/video-list";
+import {VideoList, VideoListSkeleton} from "../../../widgets/video-list";
 import { VideoModal } from "../../../widgets/video-modal";
 
 const videos = ref<Video[]>([])
@@ -22,8 +22,10 @@ onMounted(async () => {
 
 <template>
   <div class="max-w-6xl mx-auto p-4">
-    <p v-if="loading">загрузка...</p>
-    <p v-else-if="error">ошибка...</p>
+    <VideoListSkeleton
+      v-if="loading"
+    />
+    <p v-else-if="error" class="text-red-500 text-lg">ошибка...</p>
     <VideoList
         v-else
         :videos="videos"
