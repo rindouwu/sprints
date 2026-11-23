@@ -13,7 +13,7 @@ const emit = defineEmits<{
 
 <template>
   <button
-      class="flex flex-col text-left rounded-lg overflow-hidden hover:opacity-90 transition h-full"
+      class="flex flex-col text-left bg-zinc-900 rounded-lg overflow-hidden hover:opacity-90 transition h-full"
       @click="emit('click', video)
   ">
     <div class="w-full aspect-video bg-gray-100">
@@ -25,8 +25,8 @@ const emit = defineEmits<{
     </div>
     <div class="p-2 flex flex-col gap-1">
       <h3 class="font-medium">{{ video.title }}</h3>
-      <p class="text-sm text-gray-500">{{ video.author }}</p>
-      <p class="text-sm text-gray-500">{{ video.views }}</p>
+      <p class="text-sm text-amber-200">{{ video.author }}</p>
+      <p class="text-sm text-gray-300">{{ video.views }} просмотров</p>
     </div>
   </button>
 </template>

@@ -39,19 +39,19 @@ onMounted(async () => {
           />
         </div>
 
-        <div class="p-4">
-          <h2 class="text-lg font-medium">{{ video.title }}</h2>
-          <p class="text-sm text-gray-500">
-            {{ video.views }}
-            {{ video.author}}
+        <div class="p-4 bg-zinc-900">
+          <h2 class="text-lg font-semibold">{{ video.title }}</h2>
+          <p class="text-sm text-amber-200">
+            {{ video.author }}
+            <span class="pl-4 text-gray-200">{{ video.views }} просмотров</span>
           </p>
-          <p class="video.description">
+          <p class="video.description pt-2">
             {{ video.description }}
           </p>
         </div>
 
         <button
-          class="absolute top-3 right-3 text-xl py-2 px-4 bg-blue-400 rounded-lg text-white"
+          class="absolute top-3 right-3 text-xl py-2 px-4 bg-amber-200 rounded-lg text-zinc-950 cursor-pointer"
           @click="emit('close')"
         >
           Закрыть
