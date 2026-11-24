@@ -16,7 +16,7 @@ export class ApiError extends Error {
     }
 }
 const getAccessToken = () => {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
 }
 
 export const apiFetch = async <T>(endpoint: string, options: ApiOptions = {}): Promise<T> => {

@@ -7,12 +7,13 @@ const router = useRouter();
 const session = useSessionStore();
 const { signOut } = useAuth();
 
+const emit = defineEmits<{
+  'open-upload': [];
+}>();
+
 const handleLogout = () => {
   signOut();
   router.push("/login");
-}
-const openUpload = () => {
-  alert('заглущка');
 }
 </script>
 
@@ -33,7 +34,7 @@ const openUpload = () => {
     <div class="mt-auto flex flex-col gap-2 w-full pt-4">
       <template v-if="session.isAuthenticated">
         <button
-          @click="openUpload"
+          @click="emit('open-upload')"
           class="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-sm px-4 py-2 text-sm font-medium transition-colors"
         >
           Загрузить видео
