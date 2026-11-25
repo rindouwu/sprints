@@ -21,7 +21,3 @@ const emit = defineEmits<{
     />
   </div>
 </template>
-
-<style scoped>
-
-</style>

@@ -30,7 +30,3 @@ const emit = defineEmits<{
     </div>
   </button>
 </template>
-
-<style scoped>
-
-</style>

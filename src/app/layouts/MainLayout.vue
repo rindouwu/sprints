@@ -35,7 +35,3 @@ const onUploaded = () => {
     @uploaded="onUploaded"
   />
 </template>
-
-<style scoped>
-
-</style>

@@ -57,7 +57,3 @@ const handleLogout = () => {
     </div>
   </aside>
 </template>
-
-<style scoped>
-
-</style>
