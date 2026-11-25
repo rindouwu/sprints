@@ -3,20 +3,36 @@ import { onMounted, ref } from "vue";
 import { getVideos, type Video } from "../../../entities/video";
 import {VideoList, VideoListSkeleton} from "../../../widgets/video-list";
 import { VideoModal } from "../../../widgets/video-modal";
+import {useRoute} from "vue-router";
 
+const route = useRoute()
 const videos = ref<Video[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
 const selected = ref<Video | null>(null)
 
-onMounted(async () => {
+const loadVideos = async () => {
+  loading.value = true
   try {
     videos.value = await getVideos()
+
+    const videoId = route.query.video
+    if(videoId) {
+      const found = videos.value.find((v) => v.id === videoId)
+      if(found) {
+        selected.value = found
+      }
+    }
   } catch {
     error.value = "Не удалось загрузить видео"
   } finally {
     loading.value = false
   }
+}
+
+onMounted(() => {
+  loadVideos()
+  window.addEventListener('video-uploaded', loadVideos)
 })
 </script>
 

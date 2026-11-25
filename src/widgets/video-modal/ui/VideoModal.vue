@@ -9,6 +9,21 @@ const emit = defineEmits<{close: []}>()
 const loading = ref(true)
 const views = ref(props.video.views)
 
+const isCopied = ref(false)
+const copyLink = async () => {
+  try {
+    const url = `${window.location.origin}/?video=${props.video.id}`
+    await navigator.clipboard.writeText(url)
+    isCopied.value = true
+
+    setTimeout(() => {
+      isCopied.value = false
+    }, 2000)
+  } catch (e) {
+    console.error('Не удалось скопировать' ,e)
+  }
+}
+
 onMounted(async () => {
   try {
     const data = await incrementViews(props.video.id)
@@ -48,6 +63,16 @@ onMounted(async () => {
           <p class="video.description pt-2">
             {{ video.description }}
           </p>
+
+          <div class="pt-4 flex items-center gap-2">
+            <button
+              @click="copyLink"
+              class="text-sm px-3 py-2 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors flex items-center gap-2"
+            >
+              <p v-if="isCopied" class="text-green-400">Скопировано!</p>
+              <p v-else>Поделиться</p>
+            </button>
+          </div>
         </div>
 
         <button
